@@ -17,7 +17,7 @@ I'm a huge fan of serverless solutions and cloud in general.
 ### What inspires me
 What inspires me is my active participation in technical interviews and assessments at my current company. I strongly believe that working as a technical interviewer helps me stay in good shape and keep up with the modern trends of the market.
 
-![tech interview counter](https://img.shields.io/badge/interviews_conducted-29-green?style=for-the-badge&color=e38244)
+![tech interviews counter](https://img.shields.io/endpoint?url=https%3A%2F%2Fuladsite.azurewebsites.net%2Fapi%2FInterviewsBadge&style=for-the-badge)
 
 ### Contact me
 
