@@ -20,7 +20,9 @@ The are two ways to create an alias:
 # Ideas for Aliases
 
 ## Switching to key branches
-Let's say you contribute to several projects with the same git flow and branching model. In this case, it can be useful to have a command that can make a checkout of the most commonly used brach for you. I trully believe, that in many teams developers have an convention to use **`dev`** brach for development purposes. In this case, you can use the following aliases:
+Let's say you contribute to several projects with the same git flow and branching model. In this case, it can be 
+useful to have a command that can make a checkout of the most commonly used branch for you. I truly believe, that in 
+many teams developers have an convention to use **`dev`** branch for development purposes. In this case, you can use the following aliases:
 
 ``` js
 [alias]
@@ -28,7 +30,7 @@ Let's say you contribute to several projects with the same git flow and branchin
 	dev-pull = !sh -c 'git checkout dev && git pull'
 ```
 
-As you see, these commands could be used for checkout the `dev` brach which is actively used by developers. However, the second command combines switching the branch and pulling changes. This is one of possible patterns of using git aliases.
+As you see, these commands could be used for checkout the `dev` branch which is actively used by developers. However, the second command combines switching the branch and pulling changes. This is one of possible patterns of using git aliases.
 
 > 💡Aliases can be used for combining commands
 >
