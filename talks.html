@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="posts">
+  {% for talk in site.talks %}
+    <article class="post">
+
+      <h1><a href="{{ site.baseurl }}{{ talk.url }}">{{ talk.title }}</a></h1>
+
+      <div class="entry">
+        {{ talk.description }}
+      </div>
+
+      <div class="entry">
+        <p>          
+          <img src="{{ site.baseurl }}/images/{{ talk.banner }}" alt="{{ talk.banner }}" style="width: 100%;"/>
+        </p>
+      </div>
+
+      <div class="date">
+        <p>
+          {{ talk.location }}, {{ talk.date | date: "%B %e, %Y" }}
+        </p>
+      </div>
+
+      <a href="{{ site.baseurl }}{{ talk.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
