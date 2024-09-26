@@ -26,7 +26,7 @@ app.UseHttpsRedirection();
 ```
 
 Navigating to `http://mywebsite.example/weatherforecast` will lead to redirection to `https://mywebsite.
-example/weatherforecast` with `307 Temporary redirect` 
+example/weatherforecast` with `307 Temporary Redirect` 
 
 ![temp_redirection_with_https_redirection](../images/hsts_post/temp_redirection_with_http_redirection.png)
 
@@ -95,7 +95,7 @@ needed:
 After completing all the prerequisite steps, we can finally check the outcome:
 
 - Request `http://mywebsite.example`. It will be regularly redirected to `https://mywebsite.example` with `307 
-   Temporary redirect`.
+   Temporary Redirect`.
 
     ![temp_redirection_with_http_redirection](../images/hsts_post/temp_redirection_with_http_redirection.png)
 
@@ -159,7 +159,7 @@ At this article we briefly described:
 - What is `HTTP Redirection`?
 - What is `HSTS`?
 - What how to avoid any HTTP calls?
-- What is the difference between `307 Temporary redirect` and `307 Internal Redirect`
+- What is the difference between `307 Temporary Redirect` and `307 Internal Redirect`
 - What is HSTS preloading?
 - How to add your website to `Chromium HSTS preloading list`?
 
