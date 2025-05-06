@@ -1,0 +1,25 @@
+# Ignore build artifacts
+_site
+.sass-cache
+.jekyll-cache
+.bundle
+vendor
+node_modules
+
+# Ignore Docker & config files
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+# Ignore editor files
+*.swp
+*.swo
+*~
+*.bak
+*.log
+.vscode
+.idea
+
+# Git files
+.git
+.gitignore
