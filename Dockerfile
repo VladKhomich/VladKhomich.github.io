@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-RUN gem install jekyll bundler \
-    && gem install csv json rexml bigdecimal rake
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
 
 EXPOSE 4000
 
