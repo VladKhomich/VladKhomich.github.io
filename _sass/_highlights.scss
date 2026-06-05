@@ -20,6 +20,15 @@ code {
   }
 }
 
+.language-text {
+  color: #c2c2c2;
+}
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
 .highlight pre {
   background-color: #272822;
   overflow-x: auto;
