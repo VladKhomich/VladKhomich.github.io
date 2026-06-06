@@ -1,0 +1,39 @@
+{% assign quiz = site.data.quizzes[include.id] %}
+{% assign total = quiz.questions | size %}
+{% assign init_pct = 100 | divided_by: total %}
+<div class="quiz" id="{{ include.id }}">
+  <div class="quiz-progress-header">
+    <span class="quiz-progress-label" id="{{ include.id }}-progress-label">1 / {{ total }}</span>
+    <div class="quiz-progress-track">
+      <div class="quiz-progress-fill" id="{{ include.id }}-progress-fill" style="width: {{ init_pct }}%"></div>
+    </div>
+  </div>
+  {% for item in quiz.questions %}
+  {% assign q_index = forloop.index0 %}
+  {% assign correct_count = 0 %}
+  {% for option in item.options %}
+    {% if option.correct %}{% assign correct_count = correct_count | plus: 1 %}{% endif %}
+  {% endfor %}
+  {% if correct_count == 1 %}{% assign input_type = "radio" %}{% else %}{% assign input_type = "checkbox" %}{% endif %}
+  <div class="quiz-question-block"{% unless forloop.first %} style="display:none"{% endunless %}{% if item.explanation %} data-explanation="{{ item.explanation }}"{% endif %}>
+    <p class="quiz-question">{{ forloop.index }}. {{ item.question }}</p>
+    {% if input_type == "checkbox" %}<p class="quiz-hint">Select all that apply</p>{% endif %}
+    <div class="quiz-options">
+      {% for option in item.options %}
+      <label class="quiz-option">
+        <input type="{{ input_type }}"{% if input_type == "radio" %} name="{{ include.id }}-q{{ q_index }}"{% endif %} data-correct="{{ option.correct }}" />
+        <span>{{ option.text }}</span>
+      </label>
+      {% endfor %}
+    </div>
+    <p class="quiz-question-result" id="{{ include.id }}-q{{ q_index }}-result"></p>
+    <div class="quiz-actions">
+      <button class="quiz-check quiz-btn-secondary" onclick="checkQuestion('{{ include.id }}', {{ q_index }})">Check answer</button>
+      <button class="quiz-next quiz-btn" onclick="nextQuestion('{{ include.id }}', {{ q_index }})">{% if forloop.last %}See results{% else %}Next{% endif %}</button>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="quiz-summary" style="display:none">
+    <p class="quiz-result" id="{{ include.id }}-result"></p>
+  </div>
+</div>

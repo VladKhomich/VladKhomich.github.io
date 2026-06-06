@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<article class="post">
+  <h1>{{ page.title }}</h1>
+
+  <div class="entry">
+    {{ content }}
+  </div>
+
+  {% include quiz.html id=page.quiz_id %}
+
+  <div class="date">
+    Created on {{ page.date | date: "%B %e, %Y" }}
+  </div>
+
+</article>

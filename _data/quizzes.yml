@@ -1,0 +1,248 @@
+quiz_responsible_ai:
+  questions:
+    - question: "Which Responsible AI principle focuses on ensuring AI systems treat all people equitably?"
+      options:
+        - text: "Transparency"
+          correct: false
+        - text: "Fairness"
+          correct: true
+        - text: "Accountability"
+          correct: false
+        - text: "Inclusiveness"
+          correct: false
+    - question: "Which actions help improve the fairness of an AI solution?"
+      options:
+        - text: "Testing the model using diverse datasets"
+          correct: true
+        - text: "Monitoring model outputs for bias"
+          correct: true
+        - text: "Ignoring minority demographic groups"
+          correct: false
+        - text: "Evaluating performance across different populations"
+          correct: true
+    - question: "Which Responsible AI principle is most related to explaining how an AI system reached a decision?"
+      options:
+        - text: "Reliability and Safety"
+          correct: false
+        - text: "Accountability"
+          correct: false
+        - text: "Transparency"
+          correct: true
+        - text: "Inclusiveness"
+          correct: false
+    - question: "Which of the following are examples of Responsible AI practices?"
+      options:
+        - text: "Applying content filtering"
+          correct: true
+        - text: "Human oversight and review"
+          correct: true
+        - text: "Deploying models without testing"
+          correct: false
+        - text: "Monitoring AI outputs after deployment"
+          correct: true
+    - question: "A company wants to ensure users know they are interacting with an AI system instead of a human. Which Responsible AI principle does this support?"
+      options:
+        - text: "Transparency"
+          correct: true
+        - text: "Fairness"
+          correct: false
+        - text: "Privacy and Security"
+          correct: false
+        - text: "Inclusiveness"
+          correct: false
+    - question: "Which techniques can help reduce harmful AI-generated content?"
+      options:
+        - text: "Prompt engineering"
+          correct: true
+        - text: "Content filtering"
+          correct: true
+        - text: "Human review"
+          correct: true
+        - text: "Increasing randomness without restrictions"
+          correct: false
+    - question: "Which Responsible AI principle states that humans remain responsible for AI system outcomes?"
+      options:
+        - text: "Transparency"
+          correct: false
+        - text: "Accountability"
+          correct: true
+        - text: "Inclusiveness"
+          correct: false
+        - text: "Reliability and Safety"
+          correct: false
+    - question: "Which statements about Responsible AI are true?"
+      options:
+        - text: "AI systems should be monitored after deployment"
+          correct: true
+        - text: "Responsible AI only applies during model training"
+          correct: false
+        - text: "AI systems should be designed with security considerations"
+          correct: true
+        - text: "Fairness includes evaluating bias across demographic groups"
+          correct: true
+    - question: "An AI system consistently performs worse for users speaking with certain accents. Which Responsible AI principle is most directly affected?"
+      options:
+        - text: "Inclusiveness"
+          correct: true
+        - text: "Transparency"
+          correct: false
+        - text: "Accountability"
+          correct: false
+        - text: "Reliability and Safety"
+          correct: false
+    - question: "Which of the following are official Microsoft Responsible AI principles?"
+      options:
+        - text: "Fairness"
+          correct: true
+        - text: "Transparency"
+          correct: true
+        - text: "Profitability"
+          correct: false
+        - text: "Accountability"
+          correct: true
+        - text: "Privacy and Security"
+          correct: true
+        - text: "Exclusivity"
+          correct: false
+
+quiz_k8s_ch3:
+  questions:
+    - question: "What is the primary scheduling unit in Kubernetes?"
+      explanation: "The Pod is the fundamental unit that Kubernetes schedules onto nodes. It groups one or more containers that share a common lifecycle. A Deployment manages Pods but is not itself scheduled onto a node."
+      options:
+        - text: "Node"
+          correct: false
+        - text: "Deployment"
+          correct: false
+        - text: "Pod"
+          correct: true
+        - text: "Service"
+          correct: false
+    - question: "What is the role of the kubelet on a Kubernetes node?"
+      explanation: "Each node runs a kubelet that communicates with the control plane and manages container lifecycle (start, stop, restart) on that node via the container runtime."
+      options:
+        - text: "It stores the desired state of all Deployments in the cluster"
+          correct: false
+        - text: "It communicates with the control plane and manages the container lifecycle on the node"
+          correct: true
+        - text: "It provides the external IP address for LoadBalancer Services"
+          correct: false
+        - text: "It acts as the container registry for the cluster"
+          correct: false
+    - question: "Why should you use a Deployment rather than scheduling Pods directly?"
+      explanation: "Pods scheduled directly will restart on crash, but won't be rescheduled if evicted due to node failure or maintenance. A Deployment controller continuously reconciles the desired replica count, replacing lost Pods automatically."
+      options:
+        - text: "Pods cannot specify container images without a Deployment"
+          correct: false
+        - text: "Pods scheduled directly cannot have more than one container"
+          correct: false
+        - text: "A Deployment manages Pod lifecycle including rescheduling Pods lost due to node failure or eviction"
+          correct: true
+        - text: "Direct Pods cannot be exposed via a Service"
+          correct: false
+    - question: "How does a Kubernetes Service know which Pods to route traffic to?"
+      explanation: "A Service uses a selector field with a key-value label. It routes traffic only to running Pods carrying that matching label. The Service has no direct knowledge of or reference to any Deployment."
+      options:
+        - text: "It uses the Deployment's name field to find its Pods"
+          correct: false
+        - text: "It references the Pods directly using a label selector that matches a label on the Pod template"
+          correct: true
+        - text: "It queries the control plane for a list of all running Pods and picks the least loaded ones"
+          correct: false
+        - text: "It is automatically linked to the most recently created Deployment"
+          correct: false
+    - question: "When you run kubectl apply with a new container image version, what does Kubernetes do by default?"
+      explanation: "Kubernetes uses a rolling update strategy by default — replacing Pods incrementally rather than all at once, maintaining availability throughout the update."
+      options:
+        - text: "It deletes all existing Pods immediately and creates new ones with the updated image"
+          correct: false
+        - text: "It creates a completely new Deployment alongside the old one and switches traffic after all new Pods are ready"
+          correct: false
+        - text: "It replaces Pods one or a few at a time using a rolling update strategy, maintaining availability"
+          correct: true
+        - text: "It does nothing until all existing Pods are manually deleted"
+          correct: false
+    - question: "What does the CrashLoopBackOff status on a Pod indicate?"
+      explanation: "CrashLoopBackOff means the container crashes repeatedly at startup or shortly after. Kubernetes introduces exponentially increasing delays (10s, 20s, 40s…) between restart attempts to avoid consuming system resources."
+      options:
+        - text: "The Pod is waiting for sufficient cluster resources; Kubernetes retries scheduling every 30 seconds"
+          correct: false
+        - text: "The container is crashing repeatedly; Kubernetes uses exponential backoff between restart attempts"
+          correct: true
+        - text: "The container image cannot be pulled; Kubernetes retries the image pull indefinitely"
+          correct: false
+        - text: "The Pod has been intentionally stopped by an administrator"
+          correct: false
+    - question: "What two changes are required to use a locally built Docker image with a local Kubernetes cluster?"
+      explanation: "Set imagePullPolicy: Never to prevent Kubernetes from trying to pull from a remote registry, and reference the image by its local tag only with no registry URL prefix."
+      options:
+        - text: "Set imagePullPolicy: Always and use the full registry URL prefix"
+          correct: false
+        - text: "Set imagePullPolicy: Never and reference the image by its local name without a registry URL prefix"
+          correct: true
+        - text: "Set replicas: 1 and add hostNetwork: true to the PodSpec"
+          correct: false
+        - text: "Use kubectl create instead of kubectl apply and specify the image ID"
+          correct: false
+    - question: "Why does the book prefer the declarative approach over the imperative approach for managing Kubernetes objects?"
+      explanation: "Declarative config files are reproducible across environments and support GitOps workflows. Imperative commands require remembering different commands per change and are incompatible with configuration-as-code practices."
+      options:
+        - text: "Imperative commands require root access to the cluster nodes"
+          correct: false
+        - text: "Declarative YAML files support more Kubernetes features than imperative commands"
+          correct: false
+        - text: "Declarative configuration is reproducible across environments and easier to update, enabling GitOps workflows"
+          correct: true
+        - text: "Imperative commands are only available on GKE and not on other Kubernetes platforms"
+          correct: false
+    - question: "What is the purpose of the port vs. targetPort fields in a Kubernetes Service definition?"
+      explanation: "port is the port that consumers of the Service connect to; targetPort is the port inside the container that traffic is forwarded to. This lets you expose the Service on port 80 while the container listens on 8080."
+      options:
+        - text: "port is the internal cluster port and targetPort is the external internet-facing port"
+          correct: false
+        - text: "port is the port exposed by the Service to its clients, and targetPort is the port on the container that traffic will be forwarded to"
+          correct: true
+        - text: "port specifies the protocol (TCP/UDP) and targetPort specifies the port number"
+          correct: false
+        - text: "Both fields must always be set to the same value or Kubernetes will reject the Service"
+          correct: false
+    - question: "What is a key difference between running Kubernetes locally vs. on a cloud provider, regarding Services?"
+      explanation: "Cloud providers provision a real external IP and network load balancer for LoadBalancer-type Services. Local clusters have no such mechanism, so the external IP stays pending. The workaround is kubectl port-forward."
+      options:
+        - text: "Local clusters do not support the Deployment object"
+          correct: false
+        - text: "Local clusters cannot run more than one Pod replica"
+          correct: false
+        - text: "Local clusters do not provision an external IP for LoadBalancer-type Services; you must use kubectl port-forward instead"
+          correct: true
+        - text: "Local clusters require all container images to be rebuilt from scratch without caching"
+          correct: false
+
+quiz_rag:
+  questions:
+    - question: "Which are valid RAG retrieval strategies?"
+      explanation: "RAG retrieval relies on semantic similarity (dense vectors) or keyword matching (BM25). SQL JOINs are relational database operations, not retrieval strategies."
+      options:
+        - text: "Dense vector search"
+          correct: true
+        - text: "SQL JOIN"
+          correct: false
+        - text: "BM25 keyword search"
+          correct: true
+    - question: "What makes RAG systems vulnerable to prompt injection?"
+      explanation: "The model processes all context as a flat token sequence — it has no trust boundary between your system prompt and retrieved documents, so malicious content in either can influence its behavior."
+      options:
+        - text: "Retrieved documents land in the model context alongside system instructions"
+          correct: true
+        - text: "Vector databases are insecure by default"
+          correct: false
+        - text: "The model cannot distinguish between developer instructions and retrieved content"
+          correct: true
+    - question: "Which mitigations reduce prompt injection risk in RAG pipelines?"
+      options:
+        - text: "Sanitizing retrieved content before adding it to context"
+          correct: true
+        - text: "Using a larger embedding model"
+          correct: false
+        - text: "Restricting tool/action scope for the agent"
+          correct: false
