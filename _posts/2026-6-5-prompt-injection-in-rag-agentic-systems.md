@@ -494,3 +494,5 @@ This lesson isn't new. In traditional software engineering, user input is untrus
 Retrieved content feels like your own data. It came from your knowledge base. It matched what the user asked. But you didn't write it. Anyone with write access to any indexed source controls part of what your agent sees.
 
 > 💡 Your vector database is not trusted memory. It is another external input surface.
+
+Reference: [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)

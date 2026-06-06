@@ -266,7 +266,7 @@ nav {
 
 .post {
   blockquote {
-    margin: 1.8em 0.8em;
+    margin: 1.8em 0.8em 1.8em 0;
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
@@ -276,7 +276,7 @@ nav {
   .comments {
     margin-top: 10px;
   }
-  
+
   .read-more {
     text-transform: uppercase;
     font-size: 15px;
