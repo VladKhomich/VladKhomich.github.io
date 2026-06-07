@@ -93,4 +93,6 @@ function showSummary(id) {
   result.className = 'quiz-result ' + (allCorrect ? 'quiz-pass' : 'quiz-fail');
 
   quiz.querySelector('.quiz-summary').style.display = '';
+
+  if (window.recordQuizCompletion) window.recordQuizCompletion(id);
 }

@@ -44,12 +44,16 @@
       <div class="container">
         <footer class="footer">
           {% include svg-icons.html %}
+          <p class="footer-note">This site stores a small marker in your browser to avoid counting repeat views on posts.</p>
         </footer>
       </div>
     </div>
 
     {% include analytics.html %}
+    <script>window.COUNTER_API_URL = "{{ site.counter_api_url }}";</script>
     <script src="{{ site.baseurl }}/js/quiz.js"></script>
+    <script src="{{ site.baseurl }}/js/view-counter.js"></script>
+    <script src="{{ site.baseurl }}/js/quiz-counter.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>

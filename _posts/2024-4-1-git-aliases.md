@@ -2,6 +2,7 @@
 layout: post
 title: Git Alias Ideas
 excerpt: Customize Git commands for your needs with Git Aliases.
+post_key: gitalias
 ---
 
 Customize Git commands for your needs with Git Aliases.

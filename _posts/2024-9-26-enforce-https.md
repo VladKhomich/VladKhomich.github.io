@@ -2,6 +2,7 @@
 layout: post
 title: Enforcing HTTPS and HSTS
 excerpt: Enforcing HTTPS and how it works under the hood
+post_key: httpsandhsts
 ---
 
 Enforcing HTTPS and how it works under the hood

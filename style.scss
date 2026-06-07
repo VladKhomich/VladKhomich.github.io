@@ -522,6 +522,12 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+
+  .footer-note {
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: $gray;
+  }
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS

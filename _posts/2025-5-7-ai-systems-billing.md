@@ -2,6 +2,7 @@
 layout: post
 title: Billing Models for AI-Powered Systems
 excerpt: An essential part of system design is deciding how to bill for AI-powered services
+post_key: aibillingmodels
 ---
 
 One of the essential questions to address during the initial system design is the billing model.

@@ -39,6 +39,9 @@ disqus:
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics:
 
+# Base URL of the view/quiz counter API, e.g. http://localhost:7071/api/counter
+counter_api_url: https://uladnetcounter-hrf4fggededddqc7.polandcentral-01.azurewebsites.net/api/counter
+
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
 url:

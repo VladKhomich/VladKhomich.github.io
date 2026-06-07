@@ -13,6 +13,7 @@ layout: default
 
   <div class="date">
     Created on {{ page.date | date: "%B %e, %Y" }}
+    <span id="quiz-counter" data-quiz-id="{{ page.quiz_id }}"></span>
   </div>
 
   {% include giscus.html %}
