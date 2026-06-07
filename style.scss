@@ -489,12 +489,18 @@ nav {
 
   .quiz-question-result {
     font-size: 0.85em;
-    font-weight: bold;
+    font-weight: normal;
     min-height: 1.2em;
 
     &.quiz-pass        { color: #28a745; }
     &.quiz-fail        { color: $black; }
-    &.quiz-explanation { color: $darkGray; }
+    &.quiz-explanation {
+      color: $darkGray;
+      background: lighten($blue, 38%);
+      display: inline-block;
+      padding: 0.4em 0.7em;
+      border-radius: 4px;
+    }
   }
 
   .quiz-result {

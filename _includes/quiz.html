@@ -8,6 +8,9 @@
       <div class="quiz-progress-fill" id="{{ include.id }}-progress-fill" style="width: {{ init_pct }}%"></div>
     </div>
   </div>
+  <div class="quiz-summary" style="display:none">
+    <p class="quiz-result" id="{{ include.id }}-result"></p>
+  </div>
   {% for item in quiz.questions %}
   {% assign q_index = forloop.index0 %}
   {% assign correct_count = 0 %}
@@ -33,7 +36,5 @@
     </div>
   </div>
   {% endfor %}
-  <div class="quiz-summary" style="display:none">
-    <p class="quiz-result" id="{{ include.id }}-result"></p>
-  </div>
+
 </div>

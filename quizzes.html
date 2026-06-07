@@ -2,7 +2,7 @@
 layout: default
 ---
 
-Some quizzes for developers will be posted here. Some of them will be added just for fun, some of them will help to assess your knowledge.
+Quizzes for developers will be posted here. Some of them will be added just for fun, some will help to assess your knowledge.
 
 <div class="posts">
   {% for post in site.quizzes %}
@@ -14,7 +14,7 @@ Some quizzes for developers will be posted here. Some of them will be added just
         {{ post.excerpt }}
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Take Quiz</a>
     </article>
   {% endfor %}
 </div>

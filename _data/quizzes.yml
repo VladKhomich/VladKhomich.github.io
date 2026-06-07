@@ -184,7 +184,7 @@ quiz_k8s_ch3:
           correct: false
         - text: "Use kubectl create instead of kubectl apply and specify the image ID"
           correct: false
-    - question: "Why does the book prefer the declarative approach over the imperative approach for managing Kubernetes objects?"
+    - question: "Why usually we prefer the declarative approach over the imperative approach for managing Kubernetes objects?"
       explanation: "Declarative config files are reproducible across environments and support GitOps workflows. Imperative commands require remembering different commands per change and are incompatible with configuration-as-code practices."
       options:
         - text: "Imperative commands require root access to the cluster nodes"
@@ -216,6 +216,116 @@ quiz_k8s_ch3:
         - text: "Local clusters do not provision an external IP for LoadBalancer-type Services; you must use kubectl port-forward instead"
           correct: true
         - text: "Local clusters require all container images to be rebuilt from scratch without caching"
+          correct: false
+    - question: "What is the default state of a readiness probe when a container first starts?"
+      explanation: "Readiness starts in the failing state. Without this, Kubernetes would route traffic to a container immediately on start, causing failed requests during boot. The probe must succeed before the Pod is added to the Service's traffic rotation."
+      options:
+        - text: "Passing — the container is assumed ready until proven otherwise"
+          correct: false
+        - text: "Failing — the container is assumed unready until it proves it can serve traffic"
+          correct: true
+        - text: "Unknown — Kubernetes waits for the first probe result before assigning a state"
+          correct: false
+        - text: "Passing — because liveness is already passing at boot"
+          correct: false
+    - question: "What does Kubernetes do when a liveness probe fails past its threshold?"
+      explanation: "A failed liveness probe means the container is no longer running correctly, so Kubernetes terminates the Pod and schedules a replacement. This differs from a readiness failure, which only pulls the Pod out of traffic routing without restarting it."
+      options:
+        - text: "Removes the Pod from the load-balancer rotation temporarily"
+          correct: false
+        - text: "Scales down the Deployment by one replica permanently"
+          correct: false
+        - text: "Terminates and replaces the Pod"
+          correct: true
+        - text: "Sends an alert but takes no automated action"
+          correct: false
+    - question: "Which two probe settings together determine how long a liveness probe must keep failing before Kubernetes restarts the Pod?"
+      explanation: "The total failure window equals periodSeconds multiplied by failureThreshold. Checking every 30 seconds with a threshold of 6, for example, gives 180 seconds of failures before a restart is triggered."
+      options:
+        - text: "initialDelaySeconds and timeoutSeconds"
+          correct: false
+        - text: "periodSeconds and failureThreshold"
+          correct: true
+        - text: "successThreshold and initialDelaySeconds"
+          correct: false
+        - text: "timeoutSeconds and successThreshold"
+          correct: false
+    - question: "Which probe type is recommended for a non-HTTP TCP service such as an SMTP server?"
+      explanation: "TCP probes fit TCP-based services that aren't HTTP — for example, checking that an SMTP server accepts connections on port 25."
+      options:
+        - text: "httpGet"
+          correct: false
+        - text: "exec (bash script)"
+          correct: false
+        - text: "tcpSocket"
+          correct: true
+        - text: "grpc"
+          correct: false
+    - question: "Why should external dependencies like a database generally not be checked inside a liveness probe?"
+      explanation: "If a liveness probe depends on an external service that becomes temporarily unavailable, it triggers Pod restarts even though the application itself is healthy, creating churn and potentially cascading failures across a dependency graph. That kind of check belongs in the readiness probe instead."
+      options:
+        - text: "Liveness probes do not support SQL or network calls"
+          correct: false
+        - text: "It would make the liveness endpoint too slow to respond within timeoutSeconds"
+          correct: false
+        - text: "It could cause unnecessary restarts and cascading failures"
+          correct: true
+        - text: "Kubernetes ignores liveness failures if the readiness probe is passing"
+          correct: false
+    - question: "What is the main prerequisite for achieving zero downtime during a rolling update?"
+      explanation: "Kubernetes relies on the readiness probe to know when a new Pod can start receiving traffic before removing old ones. Without it, requests can be routed to a container that hasn't finished booting."
+      options:
+        - text: "Setting maxUnavailable to 0"
+          correct: false
+        - text: "Using at least 3 replicas"
+          correct: false
+        - text: "Having a correctly implemented readiness probe"
+          correct: true
+        - text: "Using an external load balancer"
+          correct: false
+    - question: "If maxUnavailable is set to 0 during a rolling update, what must be true of maxSurge?"
+      explanation: "When maxUnavailable is 0, the only way to make progress is to temporarily run extra Pods so new ones can become ready before old ones are removed. If both values were 0, the rollout couldn't proceed at all."
+      options:
+        - text: "maxSurge must also be 0"
+          correct: false
+        - text: "maxSurge must be at least 1"
+          correct: true
+        - text: "maxSurge must equal the replica count"
+          correct: false
+        - text: "maxSurge has no constraint in this case"
+          correct: false
+    - question: "Which rollout strategy is not natively supported by Kubernetes Deployments?"
+      explanation: "Kubernetes Deployments natively support RollingUpdate and Recreate. Blue/green requires extra tooling, such as a service mesh or a deployment platform, to manage two parallel environments and switch traffic between them."
+      options:
+        - text: "RollingUpdate"
+          correct: false
+        - text: "Recreate"
+          correct: false
+        - text: "Blue/Green"
+          correct: true
+        - text: "All of the above are natively supported"
+          correct: false
+    - question: "What is the trade-off of setting a high maxSurge value during a rolling update?"
+      explanation: "maxSurge controls how many extra Pods can run above the desired replica count during an update. A higher value lets more replacements happen in parallel, finishing the rollout sooner, at the cost of extra compute usage while both versions briefly coexist."
+      options:
+        - text: "The rollout slows down to protect availability"
+          correct: false
+        - text: "Fewer Pods are created during the update"
+          correct: false
+        - text: "The rollout completes faster but temporarily uses more resources"
+          correct: true
+        - text: "The Service stops routing traffic during the rollout"
+          correct: false
+    - question: "How does the Recreate rollout strategy behave?"
+      explanation: "Recreate shuts down the entire old version first and only then schedules replacement Pods. That guarantees the two versions never run side by side, but it leaves a gap with no Pods serving traffic, hence the downtime."
+      options:
+        - text: "It replaces Pods incrementally to avoid downtime"
+          correct: false
+        - text: "It terminates all old Pods before creating new ones, causing downtime"
+          correct: true
+        - text: "It runs two Deployments in parallel and switches traffic via a Service selector"
+          correct: false
+        - text: "It requires maxSurge to be set to a non-zero value"
           correct: false
 
 quiz_rag:

@@ -33,7 +33,7 @@ function evaluateBlock(id, index) {
     qResult.textContent = 'Correct!';
     qResult.className = 'quiz-question-result quiz-pass';
   } else if (explanation) {
-    qResult.textContent = explanation;
+    qResult.textContent = 'ℹ️ ' + explanation;
     qResult.className = 'quiz-question-result quiz-explanation';
   } else {
     qResult.textContent = 'Not quite.';
