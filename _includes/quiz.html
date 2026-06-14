@@ -38,6 +38,68 @@
       <button class="quiz-next quiz-btn" onclick="nextQuestion('{{ include.id }}', {{ q_index }})">{% if forloop.last %}See results{% else %}Next{% endif %}</button>
     </div>
   </div>
+  {% elsif item.type == "diagram" %}
+  {% assign marker_id = include.id | append: "-arrow-" | append: q_index %}
+  {% assign canvas_h = item.rows | times: 5 %}
+  {% assign canvas_w = item.cols | times: 8 %}
+  <div class="quiz-question-block" data-type="diagram"{% unless forloop.first %} style="display:none"{% endunless %}{% if item.explanation %} data-explanation="{{ item.explanation }}"{% endif %}>
+    <p class="quiz-question">{{ forloop.index }}. {{ item.question }}</p>
+    <p class="quiz-hint">Drag each component onto the right box in the diagram</p>
+    <div class="quiz-match quiz-diagram">
+      <div class="quiz-diagram-scroll">
+        <div class="quiz-diagram-canvas" data-marker="{{ marker_id }}" data-edges="{% for edge in item.edges %}{{ edge[0] }}>{{ edge[1] }}{% unless forloop.last %},{% endunless %}{% endfor %}" style="height: {{ canvas_h }}em; min-width: {{ canvas_w }}em;">
+          <svg class="quiz-diagram-edges" preserveAspectRatio="none">
+            <defs>
+              <marker id="{{ marker_id }}" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L7,3 L0,6 Z" />
+              </marker>
+            </defs>
+          </svg>
+          {% for box in item.containers %}
+          {% assign cspan = box.colspan | default: 1 %}
+          {% assign rspan = box.rowspan | default: 1 %}
+          {% assign c_left = box.col | minus: 1 | times: 100.0 | divided_by: item.cols %}
+          {% assign c_top = box.row | minus: 1 | times: 100.0 | divided_by: item.rows %}
+          {% assign c_w = cspan | times: 100.0 | divided_by: item.cols %}
+          {% assign c_h = rspan | times: 100.0 | divided_by: item.rows %}
+          <div class="quiz-diagram-container"{% if box.id %} data-id="{{ box.id }}"{% endif %} style="left: calc({{ c_left }}% + 0.4em); top: calc({{ c_top }}% + 0.4em); width: calc({{ c_w }}% - 0.8em); height: calc({{ c_h }}% - 0.8em);">
+            {% if box.slot %}
+            <div class="quiz-diagram-container-slot quiz-match-drop" data-correct="{{ box.correct }}"></div>
+            {% elsif box.label %}
+            <span class="quiz-diagram-container-label">{{ box.label }}</span>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% for node in item.nodes %}
+          {% assign nx = node.col | times: 2 | minus: 1 %}
+          {% assign left = nx | times: 50.0 | divided_by: item.cols %}
+          {% assign ny = node.row | times: 2 | minus: 1 %}
+          {% assign top = ny | times: 50.0 | divided_by: item.rows %}
+          {% if node.slot %}
+          <div class="quiz-diagram-node quiz-diagram-slot quiz-match-drop" data-id="{{ node.id }}" data-correct="{{ node.correct }}" style="left: {{ left }}%; top: {{ top }}%;"></div>
+          {% else %}
+          <div class="quiz-diagram-node quiz-diagram-label" data-id="{{ node.id }}" style="left: {{ left }}%; top: {{ top }}%;">{{ node.label }}</div>
+          {% endif %}
+          {% endfor %}
+          {% for edge in item.edges %}
+          {% if edge[2] %}
+          <div class="quiz-diagram-edge-label" data-from="{{ edge[0] }}" data-to="{{ edge[1] }}">{{ edge[2] }}</div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="quiz-match-bank">
+        {% for component in item.components %}
+        <div class="quiz-chip" draggable="true" data-option="{{ component.id }}">{% if component.icon %}<img class="quiz-chip-icon" src="{{ component.icon }}" alt="" />{% endif %}{{ component.label }}</div>
+        {% endfor %}
+      </div>
+    </div>
+    <p class="quiz-question-result" id="{{ include.id }}-q{{ q_index }}-result"></p>
+    <div class="quiz-actions">
+      <button class="quiz-check quiz-btn-secondary" onclick="checkQuestion('{{ include.id }}', {{ q_index }})">Check answer</button>
+      <button class="quiz-next quiz-btn" onclick="nextQuestion('{{ include.id }}', {{ q_index }})">{% if forloop.last %}See results{% else %}Next{% endif %}</button>
+    </div>
+  </div>
   {% else %}
   {% assign correct_count = 0 %}
   {% for option in item.options %}

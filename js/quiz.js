@@ -1,7 +1,13 @@
 var quizState = {};
 
+// Both "match" and "diagram" questions use the drag-and-drop / chip mechanic
+// and share the same evaluation path.
+function isDragType(block) {
+  return block.dataset.type === 'match' || block.dataset.type === 'diagram';
+}
+
 function isAnswered(block) {
-  if (block.dataset.type === 'match') {
+  if (isDragType(block)) {
     return block.classList.contains('quiz-answered');
   }
   var input = block.querySelector('input[type="checkbox"], input[type="radio"]');
@@ -29,7 +35,7 @@ function evaluateBlock(id, index) {
   var quiz = document.getElementById(id);
   var block = quiz.querySelectorAll('.quiz-question-block')[index];
 
-  if (block.dataset.type === 'match') {
+  if (isDragType(block)) {
     evaluateMatchBlock(id, index, block);
     return;
   }
@@ -226,6 +232,91 @@ function initMatchBlock(matchEl) {
   });
 }
 
+var SVG_NS = 'http://www.w3.org/2000/svg';
+
+// Where the line from a box's center toward (tx, ty) crosses the box border,
+// with a small gap so the stroke/arrow doesn't sit flush against the box.
+function diagramBorderPoint(box, tx, ty) {
+  var dx = tx - box.cx;
+  var dy = ty - box.cy;
+  if (dx === 0 && dy === 0) return { x: box.cx, y: box.cy };
+  var hw = box.w / 2 + 4;
+  var hh = box.h / 2 + 4;
+  var scale = Math.min(
+    dx !== 0 ? hw / Math.abs(dx) : Infinity,
+    dy !== 0 ? hh / Math.abs(dy) : Infinity
+  );
+  return { x: box.cx + dx * scale, y: box.cy + dy * scale };
+}
+
+function drawDiagramEdges(canvas) {
+  var rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+
+  var svg = canvas.querySelector('.quiz-diagram-edges');
+  svg.setAttribute('viewBox', '0 0 ' + rect.width + ' ' + rect.height);
+
+  var nodes = {};
+  // Any element with a data-id is an edge endpoint: regular nodes and any
+  // container the author gave an id (including slot-containers).
+  canvas.querySelectorAll('[data-id]').forEach(function(node) {
+    var r = node.getBoundingClientRect();
+    nodes[node.dataset.id] = {
+      cx: r.left - rect.left + r.width / 2,
+      cy: r.top - rect.top + r.height / 2,
+      w: r.width,
+      h: r.height
+    };
+  });
+
+  // Redrawing: clear previously drawn edges, keep the <defs>/marker.
+  svg.querySelectorAll('.quiz-diagram-edge').forEach(function(el) { el.remove(); });
+
+  var marker = canvas.dataset.marker;
+  var edges = (canvas.dataset.edges || '').split(',');
+  edges.forEach(function(pair) {
+    if (!pair) return;
+    var ids = pair.split('>');
+    var from = nodes[ids[0]];
+    var to = nodes[ids[1]];
+    if (!from || !to) return;
+
+    var start = diagramBorderPoint(from, to.cx, to.cy);
+    var end = diagramBorderPoint(to, from.cx, from.cy);
+
+    var line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('class', 'quiz-diagram-edge');
+    line.setAttribute('x1', start.x);
+    line.setAttribute('y1', start.y);
+    line.setAttribute('x2', end.x);
+    line.setAttribute('y2', end.y);
+    if (marker) line.setAttribute('marker-end', 'url(#' + marker + ')');
+    svg.appendChild(line);
+  });
+
+  // Position any edge labels at the midpoint of their edge.
+  canvas.querySelectorAll('.quiz-diagram-edge-label').forEach(function(label) {
+    var from = nodes[label.dataset.from];
+    var to = nodes[label.dataset.to];
+    if (!from || !to) return;
+    label.style.left = (from.cx + to.cx) / 2 + 'px';
+    label.style.top = (from.cy + to.cy) / 2 + 'px';
+  });
+}
+
+function initDiagramCanvas(canvas) {
+  // A ResizeObserver redraws the edges whenever the canvas gains or changes
+  // size — this covers the initial layout, viewport resizes, and the moment a
+  // hidden question becomes visible (0 -> real size).
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(function() { drawDiagramEdges(canvas); }).observe(canvas);
+  } else {
+    drawDiagramEdges(canvas);
+    window.addEventListener('resize', function() { drawDiagramEdges(canvas); });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.quiz-match').forEach(initMatchBlock);
+  document.querySelectorAll('.quiz-diagram-canvas').forEach(initDiagramCanvas);
 });

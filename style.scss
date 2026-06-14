@@ -459,6 +459,15 @@ nav {
     &[draggable="false"] { cursor: default; }
   }
 
+  .quiz-chip-icon {
+    width: 1.15em;
+    height: 1.15em;
+    margin-right: 0.4em;
+    object-fit: contain;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
   .quiz-match-targets {
     display: flex;
     flex-direction: column;
@@ -505,6 +514,117 @@ nav {
       background: #f8d7da;
     }
 
+    .quiz-chip { width: 100%; }
+  }
+
+  .quiz-diagram-scroll {
+    overflow-x: auto;
+    margin-bottom: 1em;
+  }
+
+  .quiz-diagram-canvas {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .quiz-diagram-edges {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: visible;
+
+    .quiz-diagram-edge {
+      stroke: #b0b6bd;
+      stroke-width: 1.5;
+    }
+
+    path { fill: #b0b6bd; }
+  }
+
+  .quiz-diagram-edge-label {
+    position: absolute;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    background: $white;
+    padding: 0 0.35em;
+    font-size: 0.72em;
+    color: $gray;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .quiz-diagram-container {
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 1;
+    border: 1.5px dashed #b0b6bd;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.02);
+    pointer-events: none;
+  }
+
+  .quiz-diagram-container-label {
+    position: absolute;
+    top: 0;
+    left: 0.7em;
+    transform: translateY(-50%);
+    background: $white;
+    padding: 0 0.35em;
+    font-size: 0.72em;
+    font-weight: 600;
+    color: $gray;
+  }
+
+  // The drop target lives in the container's header (where its label would be),
+  // so the user identifies the container itself rather than placing a chip
+  // inside it. Sits on the top border like a legend, above the edge layer.
+  .quiz-diagram-container-slot {
+    position: absolute;
+    top: 0;
+    left: 0.7em;
+    transform: translateY(-50%);
+    flex: none;
+    min-width: 6em;
+    min-height: 2.2em;
+    background: $white;
+    pointer-events: auto;
+    z-index: 3;
+
+    .quiz-chip { width: auto; }
+  }
+
+  .quiz-diagram-node {
+    position: absolute;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: 7em;
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.3em 0.5em;
+    border-radius: 6px;
+    font-size: 0.9em;
+    line-height: 1.2;
+  }
+
+  .quiz-diagram-label {
+    background: $lightGray;
+    border: 1.5px solid #c0c0c0;
+    color: $darkGray;
+    font-weight: 600;
+  }
+
+  .quiz-diagram-slot {
+    // Inherits drop-zone look/behaviour from .quiz-match-drop; just needs to
+    // sit centered on its grid point and fill any placed chip.
+    flex: none;
     .quiz-chip { width: 100%; }
   }
 

@@ -141,6 +141,24 @@ quiz_k8s_ch3:
           match: "Stable network endpoint for Pods"
         - prompt: "kubelet"
           match: "Manages containers on each node"
+    - question: "Build the request path: identify the boundary, then place the objects a user's request flows through."
+      type: diagram
+      explanation: "A user's request enters the cluster and hits a Service, which load-balances it to a Pod. The Service and Pod both live inside the cluster."
+      cols: 3
+      rows: 3
+      containers:
+        - { id: cluster, slot: true, correct: cluster, col: 2, row: 1, colspan: 2, rowspan: 3 }
+      nodes:
+        - { id: user, label: "User", col: 1, row: 2 }
+        - { id: svc,  slot: true, correct: service, col: 2, row: 2 }
+        - { id: pod,  slot: true, correct: pod,     col: 3, row: 2 }
+      edges:
+        - [ user, svc, "HTTP" ]
+        - [ svc, pod, "routes" ]
+      components:
+        - { id: cluster, label: "Cluster", icon: "https://cdn.simpleicons.org/kubernetes" }
+        - { id: service, label: "Service", icon: "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/svc.svg" }
+        - { id: pod,     label: "Pod",     icon: "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/pod.svg" }
     - question: "Why should you use a Deployment rather than scheduling Pods directly?"
       explanation: "Pods scheduled directly will restart on crash, but won't be rescheduled if evicted due to node failure or maintenance. A Deployment controller continuously reconciles the desired replica count, replacing lost Pods automatically."
       options:
