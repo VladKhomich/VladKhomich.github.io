@@ -129,6 +129,18 @@ quiz_k8s_ch3:
           correct: false
         - text: "It acts as the container registry for the cluster"
           correct: false
+    - question: "Match each Kubernetes object to its role."
+      type: match
+      explanation: "A Pod is the smallest schedulable unit, a Deployment manages a replica set of Pods and handles rollouts, a Service gives Pods a stable network endpoint, and the kubelet runs on each node managing container lifecycle."
+      pairs:
+        - prompt: "Pod"
+          match: "Smallest deployable unit on a node"
+        - prompt: "Deployment"
+          match: "Manages Pod replicas and rollouts"
+        - prompt: "Service"
+          match: "Stable network endpoint for Pods"
+        - prompt: "kubelet"
+          match: "Manages containers on each node"
     - question: "Why should you use a Deployment rather than scheduling Pods directly?"
       explanation: "Pods scheduled directly will restart on crash, but won't be rescheduled if evicted due to node failure or maintenance. A Deployment controller continuously reconciles the desired replica count, replacing lost Pods automatically."
       options:

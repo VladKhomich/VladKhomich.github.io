@@ -346,13 +346,14 @@ nav {
     align-items: center;
     gap: 0.7em;
     padding: 0.5em 0.7em;
+    border: 1.5px solid transparent;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.15s, border-color 0.15s;
 
-    &.quiz-correct { background: #e6f4ea; }
-    &.quiz-wrong   { background: #f8d7da; }
-    &.quiz-missed  { background: #fdf7e3; }
+    &.quiz-correct { border-color: #28a745; background: #e6f4ea; }
+    &.quiz-wrong   { border-color: #dc3545; background: #f8d7da; }
+    &.quiz-missed  { border-color: #d4a72c; background: #fdf7e3; }
 
     &:not([class*="quiz-"]):hover {
       background: $lightGray;
@@ -416,6 +417,95 @@ nav {
         background: $white;
       }
     }
+  }
+
+  .quiz-match {
+    margin-bottom: 1em;
+  }
+
+  .quiz-match-bank {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.5em;
+    min-height: 2.6em;
+    padding: 0.6em;
+    margin-bottom: 1em;
+    background: $lightGray;
+    border-radius: 6px;
+  }
+
+  .quiz-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4em 0.8em;
+    background: $white;
+    border: 1.5px solid #c0c0c0;
+    border-radius: 6px;
+    cursor: grab;
+    font-size: 0.9em;
+    user-select: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+
+    &:hover { border-color: $blue; }
+
+    &.quiz-chip-selected {
+      border-color: $blue;
+      box-shadow: 0 0 0 2px rgba($blue, 0.2);
+    }
+
+    &.quiz-chip-dragging { opacity: 0.5; }
+
+    &[draggable="false"] { cursor: default; }
+  }
+
+  .quiz-match-targets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .quiz-match-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.7em;
+  }
+
+  .quiz-match-prompt {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .quiz-match-drop {
+    flex: 1;
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    padding: 0.3em;
+    border: 1.5px dashed #c0c0c0;
+    border-radius: 6px;
+    transition: border-color 0.15s, background 0.15s;
+
+    &.quiz-match-over {
+      border-color: $blue;
+      background: lighten($blue, 40%);
+    }
+
+    &.quiz-correct {
+      border-style: solid;
+      border-color: #28a745;
+      background: #e6f4ea;
+    }
+
+    &.quiz-wrong {
+      border-style: solid;
+      border-color: #dc3545;
+      background: #f8d7da;
+    }
+
+    .quiz-chip { width: 100%; }
   }
 
   .quiz-actions {

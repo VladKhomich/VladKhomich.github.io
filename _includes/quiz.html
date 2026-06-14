@@ -13,6 +13,32 @@
   </div>
   {% for item in quiz.questions %}
   {% assign q_index = forloop.index0 %}
+  {% if item.type == "match" %}
+  <div class="quiz-question-block" data-type="match"{% unless forloop.first %} style="display:none"{% endunless %}{% if item.explanation %} data-explanation="{{ item.explanation }}"{% endif %}>
+    <p class="quiz-question">{{ forloop.index }}. {{ item.question }}</p>
+    <p class="quiz-hint">Drag each option onto its matching item</p>
+    <div class="quiz-match">
+      <div class="quiz-match-bank">
+        {% for pair in item.pairs %}
+        <div class="quiz-chip" draggable="true" data-option="{{ forloop.index0 }}">{{ pair.match }}</div>
+        {% endfor %}
+      </div>
+      <div class="quiz-match-targets">
+        {% for pair in item.pairs %}
+        <div class="quiz-match-row">
+          <span class="quiz-match-prompt">{{ pair.prompt }}</span>
+          <div class="quiz-match-drop" data-correct="{{ forloop.index0 }}"></div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <p class="quiz-question-result" id="{{ include.id }}-q{{ q_index }}-result"></p>
+    <div class="quiz-actions">
+      <button class="quiz-check quiz-btn-secondary" onclick="checkQuestion('{{ include.id }}', {{ q_index }})">Check answer</button>
+      <button class="quiz-next quiz-btn" onclick="nextQuestion('{{ include.id }}', {{ q_index }})">{% if forloop.last %}See results{% else %}Next{% endif %}</button>
+    </div>
+  </div>
+  {% else %}
   {% assign correct_count = 0 %}
   {% for option in item.options %}
     {% if option.correct %}{% assign correct_count = correct_count | plus: 1 %}{% endif %}
@@ -35,6 +61,7 @@
       <button class="quiz-next quiz-btn" onclick="nextQuestion('{{ include.id }}', {{ q_index }})">{% if forloop.last %}See results{% else %}Next{% endif %}</button>
     </div>
   </div>
+  {% endif %}
   {% endfor %}
 
 </div>
