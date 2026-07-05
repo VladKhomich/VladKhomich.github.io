@@ -1,0 +1,38 @@
+{% assign toc_marker = '@@@TOC-HEADING-MARK@@@' %}
+{% assign h1_marker = toc_marker | append: '<h1' %}
+{% assign h2_marker = toc_marker | append: '<h2' %}
+{% assign h3_marker = toc_marker | append: '<h3' %}
+{% assign h4_marker = toc_marker | append: '<h4' %}
+{% assign toc_source = include.content %}
+{% assign toc_source = toc_source | replace: '<h1', h1_marker %}
+{% assign toc_source = toc_source | replace: '<h2', h2_marker %}
+{% assign toc_source = toc_source | replace: '<h3', h3_marker %}
+{% assign toc_source = toc_source | replace: '<h4', h4_marker %}
+{% assign toc_chunks = toc_source | split: toc_marker %}
+{% assign allowed_levels = include.levels %}
+
+{% capture toc_items %}
+  {% for chunk in toc_chunks offset: 1 %}
+    {% assign level = chunk | slice: 2, 1 %}
+    {% assign heading_tag = 'h' | append: level %}
+    {% if allowed_levels contains heading_tag %}
+      {% assign id_parts = chunk | split: 'id="' %}
+      {% assign heading_id = id_parts[1] | split: '"' | first %}
+      {% assign first_gt = chunk | split: '>' | first %}
+      {% assign after_open = chunk | remove_first: first_gt | remove_first: '>' %}
+      {% assign heading_text = after_open | split: '</h' | first | strip_html | strip %}
+      <li class="toc-level-{{ level }}"><a href="#{{ heading_id }}">{{ heading_text }}</a></li>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign toc_items = toc_items | strip %}
+
+{% if toc_items != "" %}
+  <div class="toc" id="toc">
+    <nav aria-label="Table of contents">
+      <ul>
+        {{ toc_items }}
+      </ul>
+    </nav>
+  </div>
+{% endif %}

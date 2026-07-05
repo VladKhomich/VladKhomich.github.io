@@ -6,6 +6,10 @@ layout: default
   <h1>{{ page.title }}</h1>
 
   <div class="entry">
+    {% if page.toc %}
+      {% assign toc_levels = page.toc_levels | default: site.toc_levels %}
+      {% include toc.html levels=toc_levels content=content %}
+    {% endif %}
     {{ content }}
   </div>
 

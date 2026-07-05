@@ -3,6 +3,8 @@ layout: post
 title: Billing Models for AI-Powered Systems
 excerpt: An essential part of system design is deciding how to bill for AI-powered services
 post_key: aibillingmodels
+toc: true
+toc_levels: [h1]
 ---
 
 One of the essential questions to address during the initial system design is the billing model.
@@ -26,7 +28,7 @@ An overview of these models is illustrated below:
 
 > 💡 Different billing models might better serve different user types (e.g., hobbyists vs enterprise clients).
 
-## Credit-based model
+# Credit-based model
 
 The key idea behind this model is the use of **upfront payments** from users. Users purchase a set of credits (e.g. coins, points, etc.), which are then used to pay for specific actions within the system.
 
@@ -40,7 +42,7 @@ This model is ideal for small atomic operations, especially if the target audien
 
 How to track credit usage in practice? Normally you will need to add an additional middleware into your system that will aggregate usage of tokens or compute time. This component may be introduced into the infrastructural layer of the system between business logic that calls the AI-provider.
 
-## Pay-as-you-go model
+# Pay-as-you-go model
 
 This model can be seen as the opposite of the credit-based approach. It is widely adopted by cloud service providers and is typically their default billing model. The core idea is simple: "use first, pay later."
 
@@ -55,7 +57,7 @@ However, the present model may sometimes lead to pitfalls:
 
 - This model works well for enterprise solutions with structured budgets and planned expenditures. However, if your target audience is primarily individual users, they may be wary of **unpredictable charges** after entering their credit card details.
 
-## Subscription-based model
+# Subscription-based model
 
 The idea behind a subscription is simple: pay once and use the service without limits for a fixed period of time. This is often the easiest model for users to understand and accept. Since there are no individual usage-based bills, there's no need to track resource consumption per user.
 
@@ -67,7 +69,7 @@ A poorly designed subscription plan can result in under- or over-utilization rel
 
 > 💡 From my experience, users tend to be less tolerant of downtime under a paid subscription. A subscription often creates a sense of ownership, rather than simply renting access. This can lead to higher expectations for SLA compared to, for example, credit-based models.
 
-## Hybrid subscription-credit model
+# Hybrid subscription-credit model
 
 Users pay a monthly subscription that includes a base number of credits. Additional credits can be purchased as needed.
 
@@ -84,7 +86,7 @@ At the same time the system requires a component that will track usage of subscr
 
 > 💡Consider implementing dashboards or notifications to support users and prevent surprises.
 
-## Freemium
+# Freemium
 
 To make your product more attractive to users and increase its competitiveness, it's important to offer some form of free access. This allows users to explore the core features, and evaluate product's value before committing financially.
 

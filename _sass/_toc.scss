@@ -1,0 +1,55 @@
+
+//
+// TABLE OF CONTENTS
+//
+
+.toc {
+  margin: 1.5em 0;
+
+  nav {
+    float: none;
+    margin-top: 0;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  li {
+    margin: 0.3em 0;
+  }
+
+  .toc-level-2 {
+    padding-left: 1em;
+  }
+
+  .toc-level-3 {
+    padding-left: 2em;
+  }
+
+  .toc-level-4 {
+    padding-left: 3em;
+  }
+
+  a {
+    display: inline-block;
+    margin-left: 0;
+    color: darkgray;
+    font-size: 0.85em;
+    font-weight: normal;
+    letter-spacing: normal;
+    text-align: left;
+    text-decoration: none;
+  }
+}
+
+.entry h1,
+.entry h2,
+.entry h3,
+.entry h4 {
+  scroll-margin-top: 20px;
+}

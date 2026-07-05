@@ -42,6 +42,9 @@ google_analytics:
 # Base URL of the view/quiz counter API, e.g. http://localhost:7071/api/counter
 counter_api_url: https://uladnetcounter-hrf4fggededddqc7.polandcentral-01.azurewebsites.net/api/counter
 
+# Default heading levels included in a post's Table of Contents (used when a post sets toc: true)
+toc_levels: [h1, h2]
+
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
 url:

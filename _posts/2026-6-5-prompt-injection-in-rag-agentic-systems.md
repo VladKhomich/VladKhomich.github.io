@@ -3,6 +3,8 @@ layout: post
 title: Prompt Injection in RAG Agentic Systems
 excerpt: Real risks and production mitigations
 post_key: raginjections
+toc: true
+toc_levels: [h1]
 ---
 
 Real risks and production mitigations

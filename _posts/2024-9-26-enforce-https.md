@@ -3,6 +3,8 @@ layout: post
 title: Enforcing HTTPS and HSTS
 excerpt: Enforcing HTTPS and how it works under the hood
 post_key: httpsandhsts
+toc: true
+toc_levels: [h1]
 ---
 
 Enforcing HTTPS and how it works under the hood
