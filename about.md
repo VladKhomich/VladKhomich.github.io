@@ -18,6 +18,8 @@ Recently I significantly expanded into AI Engineering and was able to get hands-
 
 [Microsoft Certified: Azure Fundamentals](https://learn.microsoft.com/en-us/users/uladzislaukhomich-9164/credentials/e832224a7dc036d?ref=https%3A%2F%2Fulad.net%2F)
 
+[Microsoft Certified: Azure AI Fundamentals](https://learn.microsoft.com/en-us/users/uladzislaukhomich-9164/credentials/98ef18ac6f32bc95?ref=https%3A%2F%2Fulad.net%2F)
+
 [Professional Scrum Master 1](https://www.scrum.org/user/1565530)
 
 ### Things that drive me
