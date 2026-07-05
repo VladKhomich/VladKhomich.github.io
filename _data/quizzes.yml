@@ -52,14 +52,14 @@ quiz_responsible_ai:
           correct: false
     - question: "Which techniques can help reduce harmful AI-generated content?"
       options:
+        - text: "Increasing randomness without restrictions"
+          correct: false
         - text: "Prompt engineering"
           correct: true
         - text: "Content filtering"
           correct: true
         - text: "Human review"
           correct: true
-        - text: "Increasing randomness without restrictions"
-          correct: false
     - question: "Which Responsible AI principle states that humans remain responsible for AI system outcomes?"
       options:
         - text: "Transparency"
@@ -386,3 +386,723 @@ quiz_rag:
           correct: false
         - text: "Restricting tool/action scope for the agent"
           correct: false
+
+quiz_pspo_i:
+  questions:
+    - question: "Complete the flow from stakeholders to backlog."
+      type: diagram
+      explanation: ""
+      cols: 2
+      rows: 3
+      containers:
+        - { id: team, label: "Scrum Team", col: 2, row: 1 }
+      nodes:
+        - { id: stakeholder, label: "Stakeholder", col: 1, row: 1 }
+        - { id: backlog, label: "Backlog", col: 2, row: 2 }
+        - { id: po, slot: true, correct: po, col: 2, row: 1 }
+      edges:
+        - [ stakeholder, po, "business objectives" ]
+        - [ po, backlog, "orders" ]
+      components:
+        - { id: pm,  label: "Project Manager" }
+        - { id: po,  label: "Product Owner" }
+        - { id: sm, label: "Scrum Master" }
+    - question: "Trace what happens to stakeholder feedback after a Sprint. 'Stakeholder feedback' is placed for you. Drag the remaining steps into the order the arrows show."
+      type: diagram
+      explanation: "Stakeholders give feedback at the Sprint Review, the Product Owner evaluates what it means for value, and the Product Backlog is adapted to reflect new opportunities. The Sprint Review is a working session, not a one-way demo."
+      cols: 1
+      rows: 4
+      nodes:
+        - { id: n1, label: "Stakeholder feedback", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: review,   col: 1, row: 2 }
+        - { id: n3, slot: true, correct: evaluate, col: 1, row: 3 }
+        - { id: n4, slot: true, correct: adapt,    col: 1, row: 4 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+      components:
+        - { id: review,   label: "Sprint Review" }
+        - { id: evaluate, label: "Product Owner evaluates value" }
+        - { id: adapt,    label: "Product Backlog is adapted" }
+    - question: "Complete the product value flow. 'Customer need' is placed for you. Drag the four items into the order the arrows follow."
+      type: diagram
+      explanation: "A customer need becomes a Product Backlog item, which is selected into a Sprint, turned into a usable Increment, and put in front of customers to produce Customer feedback. That feedback loops back to shape the next needs, which is empiricism in action."
+      cols: 1
+      rows: 5
+      nodes:
+        - { id: n1, label: "Customer need", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: backlog,   col: 1, row: 2 }
+        - { id: n3, slot: true, correct: sprint,    col: 1, row: 3 }
+        - { id: n4, slot: true, correct: increment, col: 1, row: 4 }
+        - { id: n5, slot: true, correct: feedback,  col: 1, row: 5 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+        - [ n4, n5 ]
+      components:
+        - { id: backlog,   label: "Product Backlog" }
+        - { id: sprint,    label: "Sprint" }
+        - { id: increment, label: "Increment" }
+        - { id: feedback,  label: "Customer Feedback" }
+    - question: "How does a Strategic Goal form in EBM? 'A satisfaction gap appears' is placed for you. Drag the remaining steps into order."
+      type: diagram
+      explanation: "A satisfaction gap (the distance between what customers want and what they have) is measured as Unrealized Value. That opportunity is what a Strategic Goal is built on, and the aim is to decrease UV by increasing Current Value."
+      cols: 1
+      rows: 4
+      nodes:
+        - { id: n1, label: "A satisfaction gap appears", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: uv,        col: 1, row: 2 }
+        - { id: n3, slot: true, correct: strategic, col: 1, row: 3 }
+        - { id: n4, slot: true, correct: close,     col: 1, row: 4 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+      components:
+        - { id: uv,        label: "Measured as Unrealized Value" }
+        - { id: strategic, label: "Form a Strategic Goal" }
+        - { id: close,     label: "Decrease UV by increasing Current Value" }
+    - question: "Order the three pillars of empiricism so each one enables the next. 'Transparency' is placed for you, and one option does not belong."
+      type: diagram
+      explanation: "Transparency enables Inspection, and Inspection enables Adaptation. Without transparency, inspection is misleading; without adaptation, inspection is pointless. Commitment is a Scrum value, not a pillar of empiricism."
+      cols: 1
+      rows: 3
+      nodes:
+        - { id: n1, label: "Transparency", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: inspection, col: 1, row: 2 }
+        - { id: n3, slot: true, correct: adaptation, col: 1, row: 3 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+      components:
+        - { id: inspection, label: "Inspection" }
+        - { id: adaptation, label: "Adaptation" }
+        - { id: commitment, label: "Commitment" }
+    - question: "In one sentence, what is the Product Owner accountable for?"
+      explanation: "This is the Scrum Guide's exact wording. The PO is accountable for value. That does not mean managing people (the team is self-managing), writing the code, or policing the process (the Scrum Master fosters Scrum)."
+      options:
+        - text: "Managing the Developers and assigning them their daily tasks"
+          correct: false
+        - text: "Maximizing the value of the product resulting from the work of the Scrum Team"
+          correct: true
+        - text: "Delivering the Increment by writing the code each Sprint"
+          correct: false
+        - text: "Guaranteeing the team follows the Scrum framework correctly"
+          correct: false
+    - question: "A Product Owner asks a Developer to write several Product Backlog items. Who remains accountable for effective Product Backlog management?"
+      explanation: "The PO may do the work or delegate it (a Developer writing items is fine), but the accountability itself can never be delegated. It stays with the Product Owner."
+      options:
+        - text: "The Developer who actually wrote the items"
+          correct: false
+        - text: "The Product Owner: the work may be delegated, but the accountability cannot"
+          correct: true
+        - text: "The whole Scrum Team shares the accountability equally"
+          correct: false
+        - text: "The Scrum Master, who oversees the process"
+          correct: false
+    - question: "During refinement the Developers ask the PO to just assign story points to speed things up. What should the PO do?"
+      explanation: "Sizing belongs to the Developers who will do the work. The PO may influence by explaining value and trade-offs but never sets or overrides estimates. Refinement is collaborative, so the PO stays engaged rather than walking out."
+      options:
+        - text: "Provide the estimates to save the team time"
+          correct: false
+        - text: "Decline; sizing belongs to the Developers, though the PO may influence by explaining trade-offs"
+          correct: true
+        - text: "Escalate to the Scrum Master to set the estimates"
+          correct: false
+        - text: "Refuse to attend refinement since estimation is not a PO concern"
+          correct: false
+    - question: "Who decides how many Product Backlog items are pulled into a Sprint?"
+      explanation: "In Sprint Planning Topic Two, the Developers select how much work to take on, through discussion with the PO who advises on value. The PO does not decide capacity or push work onto the team."
+      options:
+        - text: "The Product Owner, based on business priority"
+          correct: false
+        - text: "The Developers, in discussion with the Product Owner"
+          correct: true
+        - text: "The Scrum Master, based on measured velocity"
+          correct: false
+        - text: "Management, based on the release plan"
+          correct: false
+    - question: "In Sprint Planning, a Developer asks the PO (a former engineer) to just decide the technical implementation approach. What is correct?"
+      explanation: "Topic Three, how the work gets done, is the sole discretion of the Developers. No one, including the PO, tells them how to turn items into an Increment. The PO owns the why and what, not the how."
+      options:
+        - text: "The PO should define the tasks since they know the system well"
+          correct: false
+        - text: "How the work is done is at the sole discretion of the Developers; no one tells them how"
+          correct: true
+        - text: "The Scrum Master decides the technical approach"
+          correct: false
+        - text: "The most senior Developer decides and the PO approves it"
+          correct: false
+    - question: "The Sprint Goal has become obsolete. Who has the authority to cancel the Sprint?"
+      explanation: "Only the Product Owner can cancel a Sprint, and only when the Sprint Goal becomes obsolete. Others may suggest it, but the authority is the PO's alone, not the Scrum Master, the Developers, or management."
+      options:
+        - text: "The Scrum Master"
+          correct: false
+        - text: "The Developers, by majority vote"
+          correct: false
+        - text: "Only the Product Owner"
+          correct: true
+        - text: "Management or the stakeholder who requested the change"
+          correct: false
+    - question: "Who crafts the Sprint Goal?"
+      explanation: "Topic One: the PO proposes how the product could increase its value, then the whole Scrum Team collaborates to craft the Sprint Goal. The PO proposes; the team defines."
+      options:
+        - text: "The Product Owner alone"
+          correct: false
+        - text: "The whole Scrum Team, with the PO proposing how the product could increase value"
+          correct: true
+        - text: "The Developers alone"
+          correct: false
+        - text: "The Scrum Master, to keep it neutral"
+          correct: false
+    - question: "Several stakeholders demand conflicting changes to the product. How does Scrum frame the Product Owner?"
+      explanation: "The PO is one person, not a committee, and may represent the needs of many stakeholders in the Product Backlog. Stakeholders try to convince the PO; they do not change the backlog directly, and the PO is not a proxy who forwards everything in."
+      options:
+        - text: "As a committee that votes on backlog order"
+          correct: false
+        - text: "As one person who may represent the needs of many stakeholders in the Product Backlog"
+          correct: true
+        - text: "As a facilitator who lets the most senior stakeholder decide"
+          correct: false
+        - text: "As a proxy who forwards every request straight into the backlog"
+          correct: false
+    - question: "A senior manager orders the PO to move a pet project to the top of the Product Backlog, ahead of higher-value work. What should happen?"
+      explanation: "Ordering the Product Backlog is an explicit PO accountability, and for the PO to succeed the entire organization must respect their decisions. A backlog a manager can silently override means broken PO accountability, an organizational impediment the Scrum Master helps address."
+      options:
+        - text: "The PO must comply because the manager is more senior"
+          correct: false
+        - text: "The PO weighs the input but makes the ordering decision themselves; the organization must respect PO decisions"
+          correct: true
+        - text: "The manager may reorder the backlog directly since they outrank the PO"
+          correct: false
+        - text: "The Scrum Master overrides the PO to keep management happy"
+          correct: false
+    - question: "An Increment meets the Definition of Done on day 6 of a two-week Sprint. When can it be released?"
+      explanation: "An Increment may be delivered to stakeholders before the Sprint ends. The Sprint Review should never be considered a gate to releasing value. Releasing is the PO's call and is decoupled from the Sprint boundary."
+      options:
+        - text: "Only at the Sprint Review"
+          correct: false
+        - text: "Any time the PO decides it maximizes value; releasing is decoupled from the Sprint boundary"
+          correct: true
+        - text: "Only after the Scrum Master signs off"
+          correct: false
+        - text: "Only at the very end of the Sprint, after the Retrospective"
+          correct: false
+    - question: "Which best describes the Sprint Review?"
+      explanation: "The Sprint Review is a working session to inspect the Increment, gather feedback, and adjust the Product Backlog. It is not a demo, a sign-off/approval gate, or a release gate."
+      options:
+        - text: "A formal demo where stakeholders sign off and approve the Increment"
+          correct: false
+        - text: "A working session to inspect the Increment, gather feedback, and adjust the Product Backlog"
+          correct: true
+        - text: "A gate that must be passed before any value can be released"
+          correct: false
+        - text: "A status meeting where the PO reports progress to management"
+          correct: false
+    - question: "At Sprint end an item is 'basically done' but fails part of the Definition of Done. A stakeholder urges the PO to present it as complete. What should the PO do?"
+      explanation: "If an item does not meet the Definition of Done it cannot be released or even presented at the Sprint Review as complete; it returns to the Product Backlog. The DoD, not the PO's sign-off, is the objective standard, and faking 'done' destroys transparency."
+      options:
+        - text: "Accept it and present it as done to keep the stakeholder happy"
+          correct: false
+        - text: "Not treat it as done; it returns to the Product Backlog and is not presented as complete or released"
+          correct: true
+        - text: "Release it anyway, since the PO has final sign-off authority"
+          correct: false
+        - text: "Ask the Scrum Master to approve an exception"
+          correct: false
+    - question: "Mid-Sprint, an important stakeholder demands a 'quick' new feature be jammed into the current Sprint. What is the good PO response?"
+      explanation: "New requests enter through the Product Backlog, the single source of work. Scope may be clarified and renegotiated with the PO as more is learned, but never in a way that endangers the Sprint Goal. Authority and urgency do not override the Sprint Goal."
+      options:
+        - text: "Add it to the Sprint immediately because the stakeholder is important"
+          correct: false
+        - text: "Add it to the Product Backlog; scope may be renegotiated with the PO only if it does not endanger the Sprint Goal"
+          correct: true
+        - text: "Tell the Developers they must simply absorb the extra work"
+          correct: false
+        - text: "Cancel the Sprint to accommodate the request"
+          correct: false
+    - question: "What is the Product Goal?"
+      explanation: "The Product Goal describes a future state of the product: the long-term objective the Scrum Team plans against. It is the commitment of the Product Backlog and lives inside it. The short-term per-Sprint target is the Sprint Goal, a different thing."
+      options:
+        - text: "A short-term target the team must hit each Sprint"
+          correct: false
+        - text: "A future state of the product; the long-term objective the Scrum Team plans against"
+          correct: true
+        - text: "A prioritized list of technical tasks for the Developers"
+          correct: false
+        - text: "A separate artifact stored outside the Product Backlog"
+          correct: false
+    - question: "Leadership asks the PO to pursue a second, unrelated Product Goal at the same time as the current one. What does Scrum say?"
+      explanation: "Scrum is one Product Goal at a time. The team must fulfill or abandon one objective before taking on the next. A single clear goal is what makes a disciplined 'no' a value-maximizing act."
+      options:
+        - text: "Pursue as many Product Goals at once as stakeholders request"
+          correct: false
+        - text: "Fulfill or abandon the current Product Goal before taking on the next"
+          correct: true
+        - text: "Let each Developer own a separate Product Goal"
+          correct: false
+        - text: "Let the Scrum Master decide how many goals to run in parallel"
+          correct: false
+    - question: "A team keeps a side list of 'urgent' work outside the Product Backlog. Why is this a problem?"
+      explanation: "The Product Backlog is the single source of work for the Scrum Team, so there are no side channels. Side lists break transparency and empiricism; all work must flow through the one backlog."
+      options:
+        - text: "Side lists are fine as long as the PO knows about them"
+          correct: false
+        - text: "The Product Backlog is the single source of work; no work should exist outside it"
+          correct: true
+        - text: "Only the Scrum Master is allowed to keep a side list"
+          correct: false
+        - text: "Side work is allowed as long as it fits within the Sprint"
+          correct: false
+    - question: "Where does the Product Goal reside, and what is its relationship to the Product Backlog?"
+      explanation: "The Product Goal lives inside the Product Backlog and is its commitment. The rest of the backlog emerges to define what will fulfill the goal. It is not a separate document, and it is not part of the Sprint Backlog or the Definition of Done."
+      options:
+        - text: "In a separate strategy document kept by management"
+          correct: false
+        - text: "Inside the Product Backlog, as its commitment"
+          correct: true
+        - text: "In the Sprint Backlog, renewed each Sprint"
+          correct: false
+        - text: "Inside the Definition of Done"
+          correct: false
+    - question: "Which statement about Product Backlog refinement is correct?"
+      explanation: "Refinement is an ongoing, shared activity, not a formal Scrum event and not a solo PO task. It blends the PO's value context with the Developers' sizing. Skipping it, or having the PO fully specify everything up front, both break the emergent, collaborative backlog."
+      options:
+        - text: "It is a formal Scrum event that the PO runs alone"
+          correct: false
+        - text: "It is an ongoing, shared activity, not a formal event, blending PO value context with Developer sizing"
+          correct: true
+        - text: "It should be skipped whenever the team is short on time"
+          correct: false
+        - text: "The PO must fully specify every item up front before handing it to the Developers"
+          correct: false
+    - question: "Five Scrum Teams work on one product. How many Product Owners, Product Goals, and Product Backlogs are there?"
+      explanation: "One product = one Product Owner, one Product Goal, and one Product Backlog, however many teams. Scrum has no 'PO per team' and no 'chief PO over sub-POs'."
+      options:
+        - text: "One PO per team, all sharing one backlog"
+          correct: false
+        - text: "One Product Owner, one Product Goal, and one Product Backlog for the product"
+          correct: true
+        - text: "A chief PO coordinating five sub-POs"
+          correct: false
+        - text: "Five Product Goals coordinated by management"
+          correct: false
+    - question: "Which best defines Evidence-Based Management (EBM)?"
+      explanation: "EBM is a framework for making better-informed decisions under uncertainty using intentional experimentation and feedback. It defines value categories (KVAs), not mandatory metrics; it does not manage projects or people, and it complements empiricism rather than replacing it."
+      options:
+        - text: "A set of mandatory metrics every organization must track"
+          correct: false
+        - text: "A framework for better-informed decisions toward goals, using intentional experimentation and feedback"
+          correct: true
+        - text: "A project-management method for scheduling and staffing work"
+          correct: false
+        - text: "A replacement for Scrum's empirical process"
+          correct: false
+    - question: "An organization adopts only a couple of EBM's parts and calls it EBM. Is it?"
+      explanation: "Mirroring Scrum's immutability, implementing only parts of EBM is possible, but the result is not EBM. Naming it EBM or tracking one metric does not make it so."
+      options:
+        - text: "Yes, any partial adoption counts as EBM"
+          correct: false
+        - text: "No: implementing only parts of EBM is possible, but the result is not EBM"
+          correct: true
+        - text: "Yes, as long as leadership calls it EBM"
+          correct: false
+        - text: "Only if they track at least one metric per team"
+          correct: false
+    - question: "An organization is fighting an infectious disease. Which of these is the Strategic Goal?"
+      explanation: "Strategic Goals are framed around a desired outcome for people, not the activities/outputs used to reach them. 'Vaccinate X%' is an activity/output; 'complete a vaccine trial' is an Intermediate Goal; 'sequence the viral DNA' is an Immediate Tactical Goal."
+      options:
+        - text: "Vaccinate X% of the population"
+          correct: false
+        - text: "Eradicate the effects of the disease, measured by how many people fall ill or suffer"
+          correct: true
+        - text: "Successfully complete a vaccine trial this year"
+          correct: false
+        - text: "Sequence the viral DNA"
+          correct: false
+    - question: "What is an Immediate Tactical Goal in EBM?"
+      explanation: "The Immediate Tactical Goal is the near-term, concrete current focus of the organization's improvement efforts. The aspirational/uncertain goal is the Strategic Goal; the on-the-path milestone is the Intermediate Goal."
+      options:
+        - text: "The big, aspirational goal that realizes the Mission and Vision"
+          correct: false
+        - text: "The current focus of the organization's improvement efforts"
+          correct: true
+        - text: "A milestone showing you are on the path to the Strategic Goal"
+          correct: false
+        - text: "The organization's Vision statement"
+          correct: false
+    - question: "Current Value (CV) considers which of the following?"
+      explanation: "CV considers only the value the product delivers today, not future potential (that is Unrealized Value). It is viewed through multiple lenses, including customers, employees, and investors, and is not just revenue."
+      options:
+        - text: "Both the value delivered today and the expected future value"
+          correct: false
+        - text: "Only the value the product delivers today, not future potential"
+          correct: true
+        - text: "Only the organization's revenue this quarter"
+          correct: false
+        - text: "Only the satisfaction gap versus what customers want"
+          correct: false
+    - question: "Unrealized Value (UV) measures the satisfaction gap. How are Strategic Goals related to it?"
+      explanation: "A Strategic Goal is formed from a satisfaction gap: an opportunity to decrease UV by increasing CV. UV (the gap between the experience customers want and what they have) is where the opportunity lives."
+      options:
+        - text: "They are unrelated; Strategic Goals ignore UV"
+          correct: false
+        - text: "A Strategic Goal is formed from a satisfaction gap, an opportunity to decrease UV by increasing CV"
+          correct: true
+        - text: "UV must be reduced to zero before any Strategic Goal can be set"
+          correct: false
+        - text: "Strategic Goals only consider Current Value, never UV"
+          correct: false
+    - question: "A product is highly profitable, dominates its niche, has no real competitors, and its customers are already well served. Leadership wants a big new investment in it. What does the CV/UV read suggest?"
+      explanation: "High CV + low UV + no competitors is the classic cash cow: profitable but near the end of its investment cycle, with little satisfaction gap left to close. New investment likely pays off more on products with a larger gap (low CV + high UV). Today's revenue is not the signal; the satisfaction gap is."
+      options:
+        - text: "Invest heavily here because it already makes the most money"
+          correct: false
+        - text: "High CV + low UV signals a cash cow; new investment may create more value elsewhere (low CV + high UV)"
+          correct: true
+        - text: "UV is high here, so pour investment in to capture the gap"
+          correct: false
+        - text: "The product is failing and should be divested immediately"
+          correct: false
+    - question: "The Product Owner is accountable for which of the following?"
+      explanation: "Maximizing value, keeping the Product Backlog transparent/ordered/understood, and developing and communicating the Product Goal are PO accountabilities. Deciding how the Developers implement items is not. The PO owns what delivers value; the Developers decide how to build it."
+      options:
+        - text: "Maximizing the value of the product resulting from the work of the Scrum Team"
+          correct: true
+        - text: "Ensuring the Product Backlog is transparent, ordered, and understood"
+          correct: true
+        - text: "Deciding how the Developers implement Product Backlog items"
+          correct: false
+        - text: "Developing and explicitly communicating the Product Goal"
+          correct: true
+    - question: "Effective Product Backlog management includes which duties of the Product Owner?"
+      explanation: "The four Product Backlog management duties are: develop and communicate the Product Goal, create and clearly communicate PBIs, order PBIs, and keep the backlog transparent/visible/understood. Sizing items belongs to the Developers, and the Definition of Done is created by the Scrum Team, not owned solely by the PO."
+      options:
+        - text: "Developing and explicitly communicating the Product Goal"
+          correct: true
+        - text: "Creating and clearly communicating Product Backlog items"
+          correct: true
+        - text: "Sizing and estimating the items for the Developers"
+          correct: false
+        - text: "Ordering Product Backlog items"
+          correct: true
+        - text: "Ensuring the Product Backlog is transparent, visible, and understood"
+          correct: true
+    - question: "A PO is uncertain whether customers will use a proposed feature. Which actions align with a Product Owner mindset and EBM?"
+      explanation: "A feature is a hypothesis about value. Good POs define success measures in advance, run a small experiment to validate assumptions, and remove or change the feature if evidence shows it isn't creating value. Delivering more functionality does not automatically create value. The PO maximizes value, not features."
+      options:
+        - text: "Release the feature to all users immediately because more functionality always creates value"
+          correct: false
+        - text: "Define success measures (for example adoption or conversion) before releasing the feature"
+          correct: true
+        - text: "Run a small experiment or limited release to validate assumptions before a wider rollout"
+          correct: true
+        - text: "Remove or change the feature if evidence shows it is not creating value"
+          correct: true
+    - question: "In the EBM value chain, which measurement categories actually reflect value?"
+      explanation: "Only Outcomes (what customers/users experience) reflect value directly, and Impacts (results the org/stakeholders achieve) are derivative. Inputs (money spent), Activities (what people do), and Outputs (what is produced) tell you nothing about delivered value."
+      options:
+        - text: "Outcomes"
+          correct: true
+        - text: "Impacts"
+          correct: true
+        - text: "Inputs"
+          correct: false
+        - text: "Activities"
+          correct: false
+        - text: "Outputs"
+          correct: false
+    - question: "Which Key Value Areas make up the Market Value dimension (customer outcomes)?"
+      explanation: "Market Value = Current Value + Unrealized Value, both reflecting customer outcomes. Ability to Innovate and Time-to-Market belong to the other dimension, Organizational Capability (the org's ability to deliver valuable outcomes)."
+      options:
+        - text: "Current Value (CV)"
+          correct: true
+        - text: "Unrealized Value (UV)"
+          correct: true
+        - text: "Ability to Innovate (A2I)"
+          correct: false
+        - text: "Time-to-Market (T2M)"
+          correct: false
+    - question: "Current Value (CV) should be re-evaluated through which happiness lenses?"
+      explanation: "CV is viewed through customers/users, employees, and investors/stakeholders. Employees matter because they are ultimately the producers of value, so that lens must not be dropped. High profit with low customer satisfaction can coexist, so look at CV from multiple angles."
+      options:
+        - text: "Regulators"
+          correct: false
+        - text: "Employees"
+          correct: true
+        - text: "Investors and stakeholders"
+          correct: true
+        - text: "Competitors"
+          correct: false
+        - text: "Customers and users"
+          correct: true
+    - question: "Which of the following reduce an organization's Ability to Innovate (A2I)?"
+      explanation: "A2I falls as low-value features and systemic impediments accumulate: more budget/time goes to maintenance, leaving less capacity to innovate. Barriers count on both sides: internal (tech debt) and customer-facing (painful installs/upgrades). High customer satisfaction and fast delivery to a subset of users do not reduce A2I."
+      options:
+        - text: "High customer satisfaction with the product today"
+          correct: false
+        - text: "Accumulating low-value features that must be maintained"
+          correct: true
+        - text: "Delivering some incremental value quickly to a subset of users"
+          correct: false
+        - text: "Systemic impediments and technical debt"
+          correct: true
+        - text: "Customer-side barriers such as painful installs or upgrades"
+          correct: true
+    - question: "Which actions genuinely improve Time-to-Market (T2M)?"
+      explanation: "Smaller, more frequent releases and removing non-value-added activities improve T2M. You must also measure whether value actually improved, since T2M raises the frequency at which CV can change. Adding approval gates or moving to larger, less frequent releases works against T2M."
+      options:
+        - text: "Smaller, more frequent releases"
+          correct: true
+        - text: "Moving to larger, less frequent releases"
+          correct: false
+        - text: "Removing non-value-added activities"
+          correct: true
+        - text: "Measuring whether value actually improved after delivering faster"
+          correct: true
+        - text: "Adding more approval gates before release"
+          correct: false
+    - question: "Which statements correctly describe the Product Backlog?"
+      explanation: "The Product Backlog is emergent, ordered, and the single source of work for the Scrum Team. It is not fixed or complete up front (it emerges), and it is owned and ordered by the Product Owner, not the Scrum Master."
+      options:
+        - text: "It is ordered"
+          correct: true
+        - text: "It is the single source of work for the Scrum Team"
+          correct: true
+        - text: "It is fixed and fully complete up front"
+          correct: false
+        - text: "It is owned and ordered by the Scrum Master"
+          correct: false
+        - text: "It is emergent"
+          correct: true
+    - question: "A tactical goal targets internal effectiveness (A2I) or speed (T2M). What should a good PO also do?"
+      explanation: "Even when a tactical goal targets A2I or T2M, keep watching CV and UV so customer satisfaction stays in sight, and use all four KVAs as balanced lenses. Focusing only on A2I/T2M while ignoring CV/UV is a symptom of a lack of outcome-based goals."
+      options:
+        - text: "Keep watching Current Value and Unrealized Value"
+          correct: true
+        - text: "Treat output counts as the primary value measure"
+          correct: false
+        - text: "Ensure customer satisfaction stays in sight"
+          correct: true
+        - text: "Use all four KVAs as balanced lenses"
+          correct: true
+        - text: "Ignore customer outcomes to focus purely on speed"
+          correct: false
+    - question: "Which statements about stakeholders and the Product Backlog are true?"
+      explanation: "Stakeholders try to convince the one PO, who may represent the needs of many stakeholders, and the organization must respect the PO's decisions. Stakeholders do not change the backlog order directly, and the loudest/most senior stakeholder does not automatically set priority."
+      options:
+        - text: "Stakeholders change the backlog order directly"
+          correct: false
+        - text: "The loudest stakeholder sets the priority"
+          correct: false
+        - text: "Stakeholders try to convince the Product Owner"
+          correct: true
+        - text: "The PO may represent the needs of many stakeholders in the Product Backlog"
+          correct: true
+        - text: "The organization must respect the PO's decisions"
+          correct: true
+    - question: "For multiple teams on one product, which facts hold in Scrum?"
+      explanation: "One product shares one Product Owner, one Product Goal, and one Product Backlog. There is no 'PO per team' and no 'chief PO over sub-POs'."
+      options:
+        - text: "One Product Owner"
+          correct: true
+        - text: "One Product Goal"
+          correct: true
+        - text: "A chief Product Owner over several sub-POs"
+          correct: false
+        - text: "One Product Backlog"
+          correct: true
+        - text: "One Product Owner per team"
+          correct: false
+    - question: "Under uncertainty about a feature's value, which are sound EBM practices?"
+      explanation: "Decide the success measure in advance, build just enough to test the critical assumption, and validate value with customers. Assuming more features always add value, or skipping measurement because leadership feels confident, both contradict EBM."
+      options:
+        - text: "Decide how success will be measured before running the experiment"
+          correct: true
+        - text: "Assume that more features always add value"
+          correct: false
+        - text: "Build just enough to test the critical assumption"
+          correct: true
+        - text: "Skip measurement when leadership is confident"
+          correct: false
+        - text: "Validate the value with customers"
+          correct: true
+    - question: "A team reports '42 features shipped this quarter' and logged overtime as proof of productivity. Which of these are vanity output/activity measures that do NOT reflect value?"
+      explanation: "Features shipped and hours worked are Outputs and Activities: easy to measure, but they say nothing about delivered value. Improved customer satisfaction and a new capability customers can now use are Outcomes, which do reflect value."
+      options:
+        - text: "Improvement in customer satisfaction"
+          correct: false
+        - text: "A new capability customers can now use"
+          correct: false
+        - text: "Number of features shipped this quarter"
+          correct: true
+        - text: "Hours and overtime worked"
+          correct: true
+        - text: "Number of meetings held"
+          correct: true
+    - question: "Match each Key Value Measure (KVM) to the Key Value Area (KVA) it belongs to."
+      type: match
+      explanation: "Lead Time for Changes is a speed/cycle measure (T2M). Technical Debt is a maintenance-burden measure (A2I). Customer Satisfaction reflects value today (CV). The Customer/User Satisfaction Gap is the difference between wanted and current experience (UV)."
+      pairs:
+        - prompt: "Lead Time for Changes"
+          match: "Time-to-Market (T2M)"
+        - prompt: "Technical Debt"
+          match: "Ability to Innovate (A2I)"
+        - prompt: "Customer Satisfaction"
+          match: "Current Value (CV)"
+        - prompt: "Customer/User Satisfaction Gap"
+          match: "Unrealized Value (UV)"
+    - question: "Match each Key Value Measure to its Key Value Area."
+      type: match
+      explanation: "Deployment Frequency is about speed/frequency (T2M). Change Failure Rate reflects quality/maintenance and capacity to innovate (A2I). Revenue per Employee reflects value delivered today (CV). Potential Market Share is about future opportunity (UV). Note: three DORA metrics sit in T2M but Change Failure Rate is EBM-placed in A2I."
+      pairs:
+        - prompt: "Deployment Frequency"
+          match: "Time-to-Market (T2M)"
+        - prompt: "Change Failure Rate"
+          match: "Ability to Innovate (A2I)"
+        - prompt: "Revenue per Employee"
+          match: "Current Value (CV)"
+        - prompt: "Potential Market Share"
+          match: "Unrealized Value (UV)"
+    - question: "Match each Scrum Team activity to who holds the accountability or decision."
+      type: match
+      explanation: "The PO orders the Product Backlog. The Developers decide how the work gets done (sole discretion). The Scrum Master fosters Scrum and facilitates stakeholder collaboration as needed. The whole Scrum Team crafts the Sprint Goal together (the PO proposes the value)."
+      pairs:
+        - prompt: "Orders the Product Backlog"
+          match: "Product Owner"
+        - prompt: "Decides how the work gets done"
+          match: "Developers"
+        - prompt: "Fosters Scrum and facilitates stakeholder collaboration when needed"
+          match: "Scrum Master"
+        - prompt: "Crafts the Sprint Goal together"
+          match: "Whole Scrum Team"
+    - question: "Match each Sprint Planning topic to who leads or decides it."
+      type: match
+      explanation: "Topic One (Why): the PO proposes the value and the whole team crafts the Sprint Goal. Topic Two (What): the Developers select how much to take on, with the PO. Topic Three (How): the Developers alone, at their sole discretion."
+      pairs:
+        - prompt: "Topic One — Why is this Sprint valuable?"
+          match: "PO proposes value; whole team crafts the Sprint Goal"
+        - prompt: "Topic Two — What can be Done this Sprint?"
+          match: "Developers select how much, in discussion with the PO"
+        - prompt: "Topic Three — How will the work get done?"
+          match: "Developers alone, at their sole discretion"
+    - question: "Match each Key Value Area to its central question."
+      type: match
+      explanation: "CV asks what value is delivered today; UV asks what additional value could be achieved; A2I asks how effective the org is at improving value; T2M asks how quickly new value can be delivered."
+      pairs:
+        - prompt: "Current Value (CV)"
+          match: "What value is delivered today?"
+        - prompt: "Unrealized Value (UV)"
+          match: "What additional value could be achieved?"
+        - prompt: "Ability to Innovate (A2I)"
+          match: "How effective are we at improving value?"
+        - prompt: "Time-to-Market (T2M)"
+          match: "How quickly can we deliver new value?"
+    - question: "Reconstruct the EBM Key Value Area quadrant. The top row is Market Value (customer outcomes); the bottom row is Organizational Capability. Drag each KVA onto the box whose description fits it."
+      type: diagram
+      explanation: "Market Value = Unrealized Value + Current Value (customer outcomes). Organizational Capability = Ability to Innovate + Time-to-Market (the org's ability to deliver). CV = value today; UV = future potential / satisfaction gap; A2I = effectiveness at delivering new capabilities; T2M = speed to deliver and learn."
+      cols: 2
+      rows: 2
+      containers:
+        - { id: c_uv,  label: "Future potential / satisfaction gap", col: 1, row: 1 }
+        - { id: c_cv,  label: "Value delivered today", col: 2, row: 1 }
+        - { id: c_a2i, label: "Effectiveness at new capabilities", col: 1, row: 2 }
+        - { id: c_t2m, label: "Speed to deliver and learn", col: 2, row: 2 }
+      nodes:
+        - { id: s_uv,  slot: true, correct: uv,  col: 1, row: 1 }
+        - { id: s_cv,  slot: true, correct: cv,  col: 2, row: 1 }
+        - { id: s_a2i, slot: true, correct: a2i, col: 1, row: 2 }
+        - { id: s_t2m, slot: true, correct: t2m, col: 2, row: 2 }
+      components:
+        - { id: uv,  label: "Unrealized Value" }
+        - { id: cv,  label: "Current Value" }
+        - { id: a2i, label: "Ability to Innovate" }
+        - { id: t2m, label: "Time-to-Market" }
+    - question: "Complete the EBM value chain. Inputs is placed for you; drag the remaining four categories into the order that follows the arrows."
+      type: diagram
+      explanation: "Inputs to Activities to Outputs to Outcomes to Impacts. Inputs are money spent; Activities are what people do; Outputs are what is produced; Outcomes are what customers experience (these reflect value); Impacts are results the org/stakeholders achieve, sustainable only through improved Outcomes."
+      cols: 5
+      rows: 1
+      nodes:
+        - { id: n1, label: "Inputs", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: activities, col: 2, row: 1 }
+        - { id: n3, slot: true, correct: outputs,    col: 3, row: 1 }
+        - { id: n4, slot: true, correct: outcomes,   col: 4, row: 1 }
+        - { id: n5, slot: true, correct: impacts,    col: 5, row: 1 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+        - [ n4, n5 ]
+      components:
+        - { id: activities, label: "Activities" }
+        - { id: outputs,    label: "Outputs" }
+        - { id: outcomes,   label: "Outcomes" }
+        - { id: impacts,    label: "Impacts" }
+    - question: "Place the three EBM goal levels from most aspirational and uncertain (left) to the near-term current focus (right), matching each description."
+      type: diagram
+      explanation: "Strategic Goal (far, uncertain, realizes Mission/Vision) to Intermediate Goal (an on-the-path milestone) to Immediate Tactical Goal (the current near-term focus). Certainty increases and the time horizon shortens from left to right."
+      cols: 3
+      rows: 1
+      containers:
+        - { id: c1, label: "Far-off, highly uncertain; realizes Mission/Vision", col: 1, row: 1 }
+        - { id: c2, label: "On the path; a necessary, somewhat-uncertain step", col: 2, row: 1 }
+        - { id: c3, label: "The current, near-term focus of improvement", col: 3, row: 1 }
+      nodes:
+        - { id: s1, slot: true, correct: strategic,    col: 1, row: 1 }
+        - { id: s2, slot: true, correct: intermediate, col: 2, row: 1 }
+        - { id: s3, slot: true, correct: immediate,    col: 3, row: 1 }
+      edges:
+        - [ s1, s2 ]
+        - [ s2, s3 ]
+      components:
+        - { id: strategic,    label: "Strategic Goal" }
+        - { id: intermediate, label: "Intermediate Goal" }
+        - { id: immediate,    label: "Immediate Tactical Goal" }
+    - question: "Build the EBM experiment loop. Drag each step onto the box matching its description; the arrows show the cycle."
+      type: diagram
+      explanation: "Hypothesis (decide the success measure in advance) to Experiment & Measure to Inspect (did it actually improve? not all changes do) to Adapt (decide what next; adjust any goal level), then back to a new Hypothesis. It is a variation on the PDCA/Shewhart cycle."
+      cols: 2
+      rows: 2
+      containers:
+        - { id: c1, label: "Form an improvement idea; set the success measure in advance", col: 1, row: 1 }
+        - { id: c2, label: "Make the change; gather data", col: 2, row: 1 }
+        - { id: c3, label: "Did results actually improve?", col: 2, row: 2 }
+        - { id: c4, label: "Decide what to try next; adjust goals", col: 1, row: 2 }
+      nodes:
+        - { id: s1, slot: true, correct: hypothesis, col: 1, row: 1 }
+        - { id: s2, slot: true, correct: experiment, col: 2, row: 1 }
+        - { id: s3, slot: true, correct: inspect,    col: 2, row: 2 }
+        - { id: s4, slot: true, correct: adapt,      col: 1, row: 2 }
+      edges:
+        - [ s1, s2 ]
+        - [ s2, s3 ]
+        - [ s3, s4 ]
+        - [ s4, s1 ]
+      components:
+        - { id: hypothesis, label: "Hypothesis" }
+        - { id: experiment, label: "Experiment & Measure" }
+        - { id: inspect,    label: "Inspect" }
+        - { id: adapt,      label: "Adapt" }
+    - question: "Stakeholders want changes to the product. Build the path: two stakeholders 'convince' one accountable person, who 'orders' the single artifact. Drag the two missing pieces into place."
+      type: diagram
+      explanation: "Stakeholders try to convince the one Product Owner; they do not change the backlog directly. The PO, one person and not a committee, orders the single Product Backlog, and the organization must respect those decisions."
+      cols: 3
+      rows: 3
+      nodes:
+        - { id: st1, label: "Stakeholder", col: 1, row: 1 }
+        - { id: st2, label: "Stakeholder", col: 1, row: 3 }
+        - { id: po,  slot: true, correct: po,      col: 2, row: 2 }
+        - { id: pb,  slot: true, correct: backlog, col: 3, row: 2 }
+      edges:
+        - [ st1, po, "convince" ]
+        - [ st2, po, "convince" ]
+        - [ po, pb, "orders" ]
+      components:
+        - { id: pm,      label: "Project Manager" }
+        - { id: sm,      label: "Scrum Master" }
+        - { id: team,    label: "Scrum Team" }
+        - { id: po,      label: "Product Owner" }
+        - { id: backlog, label: "Product Backlog" }
