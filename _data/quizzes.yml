@@ -407,79 +407,6 @@ quiz_pspo_i:
         - { id: pm,  label: "Project Manager" }
         - { id: po,  label: "Product Owner" }
         - { id: sm, label: "Scrum Master" }
-    - question: "Trace what happens to stakeholder feedback after a Sprint. 'Stakeholder feedback' is placed for you. Drag the remaining steps into the order the arrows show."
-      type: diagram
-      explanation: "Stakeholders give feedback at the Sprint Review, the Product Owner evaluates what it means for value, and the Product Backlog is adapted to reflect new opportunities. The Sprint Review is a working session, not a one-way demo."
-      cols: 1
-      rows: 4
-      nodes:
-        - { id: n1, label: "Stakeholder feedback", col: 1, row: 1 }
-        - { id: n2, slot: true, correct: review,   col: 1, row: 2 }
-        - { id: n3, slot: true, correct: evaluate, col: 1, row: 3 }
-        - { id: n4, slot: true, correct: adapt,    col: 1, row: 4 }
-      edges:
-        - [ n1, n2 ]
-        - [ n2, n3 ]
-        - [ n3, n4 ]
-      components:
-        - { id: review,   label: "Sprint Review" }
-        - { id: evaluate, label: "Product Owner evaluates value" }
-        - { id: adapt,    label: "Product Backlog is adapted" }
-    - question: "Complete the product value flow. 'Customer need' is placed for you. Drag the four items into the order the arrows follow."
-      type: diagram
-      explanation: "A customer need becomes a Product Backlog item, which is selected into a Sprint, turned into a usable Increment, and put in front of customers to produce Customer feedback. That feedback loops back to shape the next needs, which is empiricism in action."
-      cols: 1
-      rows: 5
-      nodes:
-        - { id: n1, label: "Customer need", col: 1, row: 1 }
-        - { id: n2, slot: true, correct: backlog,   col: 1, row: 2 }
-        - { id: n3, slot: true, correct: sprint,    col: 1, row: 3 }
-        - { id: n4, slot: true, correct: increment, col: 1, row: 4 }
-        - { id: n5, slot: true, correct: feedback,  col: 1, row: 5 }
-      edges:
-        - [ n1, n2 ]
-        - [ n2, n3 ]
-        - [ n3, n4 ]
-        - [ n4, n5 ]
-      components:
-        - { id: backlog,   label: "Product Backlog" }
-        - { id: sprint,    label: "Sprint" }
-        - { id: increment, label: "Increment" }
-        - { id: feedback,  label: "Customer Feedback" }
-    - question: "How does a Strategic Goal form in EBM? 'A satisfaction gap appears' is placed for you. Drag the remaining steps into order."
-      type: diagram
-      explanation: "A satisfaction gap (the distance between what customers want and what they have) is measured as Unrealized Value. That opportunity is what a Strategic Goal is built on, and the aim is to decrease UV by increasing Current Value."
-      cols: 1
-      rows: 4
-      nodes:
-        - { id: n1, label: "A satisfaction gap appears", col: 1, row: 1 }
-        - { id: n2, slot: true, correct: uv,        col: 1, row: 2 }
-        - { id: n3, slot: true, correct: strategic, col: 1, row: 3 }
-        - { id: n4, slot: true, correct: close,     col: 1, row: 4 }
-      edges:
-        - [ n1, n2 ]
-        - [ n2, n3 ]
-        - [ n3, n4 ]
-      components:
-        - { id: uv,        label: "Measured as Unrealized Value" }
-        - { id: strategic, label: "Form a Strategic Goal" }
-        - { id: close,     label: "Decrease UV by increasing Current Value" }
-    - question: "Order the three pillars of empiricism so each one enables the next. 'Transparency' is placed for you, and one option does not belong."
-      type: diagram
-      explanation: "Transparency enables Inspection, and Inspection enables Adaptation. Without transparency, inspection is misleading; without adaptation, inspection is pointless. Commitment is a Scrum value, not a pillar of empiricism."
-      cols: 1
-      rows: 3
-      nodes:
-        - { id: n1, label: "Transparency", col: 1, row: 1 }
-        - { id: n2, slot: true, correct: inspection, col: 1, row: 2 }
-        - { id: n3, slot: true, correct: adaptation, col: 1, row: 3 }
-      edges:
-        - [ n1, n2 ]
-        - [ n2, n3 ]
-      components:
-        - { id: inspection, label: "Inspection" }
-        - { id: adaptation, label: "Adaptation" }
-        - { id: commitment, label: "Commitment" }
     - question: "In one sentence, what is the Product Owner accountable for?"
       explanation: "This is the Scrum Guide's exact wording. The PO is accountable for value. That does not mean managing people (the team is self-managing), writing the code, or policing the process (the Scrum Master fosters Scrum)."
       options:
@@ -568,6 +495,24 @@ quiz_pspo_i:
           correct: false
         - text: "As a proxy who forwards every request straight into the backlog"
           correct: false
+    - question: "Trace what happens to stakeholder feedback after a Sprint. 'Stakeholder feedback' is placed for you. Drag the remaining steps into the order the arrows show."
+      type: diagram
+      explanation: "Stakeholders give feedback at the Sprint Review, the Product Owner evaluates what it means for value, and the Product Backlog is adapted to reflect new opportunities. The Sprint Review is a working session, not a one-way demo."
+      cols: 1
+      rows: 4
+      nodes:
+        - { id: n1, label: "Stakeholder feedback", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: review,   col: 1, row: 2 }
+        - { id: n3, slot: true, correct: evaluate, col: 1, row: 3 }
+        - { id: n4, slot: true, correct: adapt,    col: 1, row: 4 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+      components:
+        - { id: review,   label: "Sprint Review" }
+        - { id: evaluate, label: "Product Owner evaluates value" }
+        - { id: adapt,    label: "Product Backlog is adapted" }
     - question: "A senior manager orders the PO to move a pet project to the top of the Product Backlog, ahead of higher-value work. What should happen?"
       explanation: "Ordering the Product Backlog is an explicit PO accountability, and for the PO to succeed the entire organization must respect their decisions. A backlog a manager can silently override means broken PO accountability, an organizational impediment the Scrum Master helps address."
       options:
@@ -678,6 +623,26 @@ quiz_pspo_i:
           correct: false
         - text: "The PO must fully specify every item up front before handing it to the Developers"
           correct: false
+    - question: "Stakeholders want changes to the product. Build the path: two stakeholders 'convince' one accountable person, who 'orders' the single artifact. Drag the two missing pieces into place."
+      type: diagram
+      explanation: "Stakeholders try to convince the one Product Owner; they do not change the backlog directly. The PO, one person and not a committee, orders the single Product Backlog, and the organization must respect those decisions."
+      cols: 3
+      rows: 3
+      nodes:
+        - { id: st1, label: "Stakeholder", col: 1, row: 1 }
+        - { id: st2, label: "Stakeholder", col: 1, row: 3 }
+        - { id: po,  slot: true, correct: po,      col: 2, row: 2 }
+        - { id: pb,  slot: true, correct: backlog, col: 3, row: 2 }
+      edges:
+        - [ st1, po, "convince" ]
+        - [ st2, po, "convince" ]
+        - [ po, pb, "orders" ]
+      components:
+        - { id: pm,      label: "Project Manager" }
+        - { id: sm,      label: "Scrum Master" }
+        - { id: team,    label: "Scrum Team" }
+        - { id: po,      label: "Product Owner" }
+        - { id: backlog, label: "Product Backlog" }
     - question: "Five Scrum Teams work on one product. How many Product Owners, Product Goals, and Product Backlogs are there?"
       explanation: "One product = one Product Owner, one Product Goal, and one Product Backlog, however many teams. Scrum has no 'PO per team' and no 'chief PO over sub-POs'."
       options:
@@ -689,6 +654,27 @@ quiz_pspo_i:
           correct: false
         - text: "Five Product Goals coordinated by management"
           correct: false
+    - question: "Complete the product value flow. 'Customer need' is placed for you. Drag the four items into the order the arrows follow."
+      type: diagram
+      explanation: "A customer need becomes a Product Backlog item, which is selected into a Sprint, turned into a usable Increment, and put in front of customers to produce Customer feedback. That feedback loops back to shape the next needs, which is empiricism in action."
+      cols: 1
+      rows: 5
+      nodes:
+        - { id: n1, label: "Customer need", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: backlog,   col: 1, row: 2 }
+        - { id: n3, slot: true, correct: sprint,    col: 1, row: 3 }
+        - { id: n4, slot: true, correct: increment, col: 1, row: 4 }
+        - { id: n5, slot: true, correct: feedback,  col: 1, row: 5 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+        - [ n4, n5 ]
+      components:
+        - { id: backlog,   label: "Product Backlog" }
+        - { id: sprint,    label: "Sprint" }
+        - { id: increment, label: "Increment" }
+        - { id: feedback,  label: "Customer Feedback" }
     - question: "Which best defines Evidence-Based Management (EBM)?"
       explanation: "EBM is a framework for making better-informed decisions under uncertainty using intentional experimentation and feedback. It defines value categories (KVAs), not mandatory metrics; it does not manage projects or people, and it complements empiricism rather than replacing it."
       options:
@@ -733,6 +719,24 @@ quiz_pspo_i:
           correct: false
         - text: "The organization's Vision statement"
           correct: false
+    - question: "How does a Strategic Goal form in EBM? 'A satisfaction gap appears' is placed for you. Drag the remaining steps into order."
+      type: diagram
+      explanation: "A satisfaction gap (the distance between what customers want and what they have) is measured as Unrealized Value. That opportunity is what a Strategic Goal is built on, and the aim is to decrease UV by increasing Current Value."
+      cols: 1
+      rows: 4
+      nodes:
+        - { id: n1, label: "A satisfaction gap appears", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: uv,        col: 1, row: 2 }
+        - { id: n3, slot: true, correct: strategic, col: 1, row: 3 }
+        - { id: n4, slot: true, correct: close,     col: 1, row: 4 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+        - [ n3, n4 ]
+      components:
+        - { id: uv,        label: "Measured as Unrealized Value" }
+        - { id: strategic, label: "Form a Strategic Goal" }
+        - { id: close,     label: "Decrease UV by increasing Current Value" }
     - question: "Current Value (CV) considers which of the following?"
       explanation: "CV considers only the value the product delivers today, not future potential (that is Unrealized Value). It is viewed through multiple lenses, including customers, employees, and investors, and is not just revenue."
       options:
@@ -903,6 +907,22 @@ quiz_pspo_i:
           correct: true
         - text: "The organization must respect the PO's decisions"
           correct: true
+    - question: "Order the three pillars of empiricism so each one enables the next. 'Transparency' is placed for you, and one option does not belong."
+      type: diagram
+      explanation: "Transparency enables Inspection, and Inspection enables Adaptation. Without transparency, inspection is misleading; without adaptation, inspection is pointless. Commitment is a Scrum value, not a pillar of empiricism."
+      cols: 1
+      rows: 3
+      nodes:
+        - { id: n1, label: "Transparency", col: 1, row: 1 }
+        - { id: n2, slot: true, correct: inspection, col: 1, row: 2 }
+        - { id: n3, slot: true, correct: adaptation, col: 1, row: 3 }
+      edges:
+        - [ n1, n2 ]
+        - [ n2, n3 ]
+      components:
+        - { id: inspection, label: "Inspection" }
+        - { id: adaptation, label: "Adaptation" }
+        - { id: commitment, label: "Commitment" }
     - question: "For multiple teams on one product, which facts hold in Scrum?"
       explanation: "One product shares one Product Owner, one Product Goal, and one Product Backlog. There is no 'PO per team' and no 'chief PO over sub-POs'."
       options:
@@ -929,6 +949,26 @@ quiz_pspo_i:
           correct: false
         - text: "Validate the value with customers"
           correct: true
+    - question: "Reconstruct the EBM Key Value Area quadrant. The top row is Market Value (customer outcomes); the bottom row is Organizational Capability. Drag each KVA onto the box whose description fits it."
+      type: diagram
+      explanation: "Market Value = Unrealized Value + Current Value (customer outcomes). Organizational Capability = Ability to Innovate + Time-to-Market (the org's ability to deliver). CV = value today; UV = future potential / satisfaction gap; A2I = effectiveness at delivering new capabilities; T2M = speed to deliver and learn."
+      cols: 2
+      rows: 2
+      containers:
+        - { id: c_uv,  label: "Future potential / satisfaction gap", col: 1, row: 1 }
+        - { id: c_cv,  label: "Value delivered today", col: 2, row: 1 }
+        - { id: c_a2i, label: "Effectiveness at new capabilities", col: 1, row: 2 }
+        - { id: c_t2m, label: "Speed to deliver and learn", col: 2, row: 2 }
+      nodes:
+        - { id: s_uv,  slot: true, correct: uv,  col: 1, row: 1 }
+        - { id: s_cv,  slot: true, correct: cv,  col: 2, row: 1 }
+        - { id: s_a2i, slot: true, correct: a2i, col: 1, row: 2 }
+        - { id: s_t2m, slot: true, correct: t2m, col: 2, row: 2 }
+      components:
+        - { id: uv,  label: "Unrealized Value" }
+        - { id: cv,  label: "Current Value" }
+        - { id: a2i, label: "Ability to Innovate" }
+        - { id: t2m, label: "Time-to-Market" }
     - question: "A team reports '42 features shipped this quarter' and logged overtime as proof of productivity. Which of these are vanity output/activity measures that do NOT reflect value?"
       explanation: "Features shipped and hours worked are Outputs and Activities: easy to measure, but they say nothing about delivered value. Improved customer satisfaction and a new capability customers can now use are Outcomes, which do reflect value."
       options:
@@ -1000,26 +1040,6 @@ quiz_pspo_i:
           match: "How effective are we at improving value?"
         - prompt: "Time-to-Market (T2M)"
           match: "How quickly can we deliver new value?"
-    - question: "Reconstruct the EBM Key Value Area quadrant. The top row is Market Value (customer outcomes); the bottom row is Organizational Capability. Drag each KVA onto the box whose description fits it."
-      type: diagram
-      explanation: "Market Value = Unrealized Value + Current Value (customer outcomes). Organizational Capability = Ability to Innovate + Time-to-Market (the org's ability to deliver). CV = value today; UV = future potential / satisfaction gap; A2I = effectiveness at delivering new capabilities; T2M = speed to deliver and learn."
-      cols: 2
-      rows: 2
-      containers:
-        - { id: c_uv,  label: "Future potential / satisfaction gap", col: 1, row: 1 }
-        - { id: c_cv,  label: "Value delivered today", col: 2, row: 1 }
-        - { id: c_a2i, label: "Effectiveness at new capabilities", col: 1, row: 2 }
-        - { id: c_t2m, label: "Speed to deliver and learn", col: 2, row: 2 }
-      nodes:
-        - { id: s_uv,  slot: true, correct: uv,  col: 1, row: 1 }
-        - { id: s_cv,  slot: true, correct: cv,  col: 2, row: 1 }
-        - { id: s_a2i, slot: true, correct: a2i, col: 1, row: 2 }
-        - { id: s_t2m, slot: true, correct: t2m, col: 2, row: 2 }
-      components:
-        - { id: uv,  label: "Unrealized Value" }
-        - { id: cv,  label: "Current Value" }
-        - { id: a2i, label: "Ability to Innovate" }
-        - { id: t2m, label: "Time-to-Market" }
     - question: "Complete the EBM value chain. Inputs is placed for you; drag the remaining four categories into the order that follows the arrows."
       type: diagram
       explanation: "Inputs to Activities to Outputs to Outcomes to Impacts. Inputs are money spent; Activities are what people do; Outputs are what is produced; Outcomes are what customers experience (these reflect value); Impacts are results the org/stakeholders achieve, sustainable only through improved Outcomes."
@@ -1086,23 +1106,3 @@ quiz_pspo_i:
         - { id: experiment, label: "Experiment & Measure" }
         - { id: inspect,    label: "Inspect" }
         - { id: adapt,      label: "Adapt" }
-    - question: "Stakeholders want changes to the product. Build the path: two stakeholders 'convince' one accountable person, who 'orders' the single artifact. Drag the two missing pieces into place."
-      type: diagram
-      explanation: "Stakeholders try to convince the one Product Owner; they do not change the backlog directly. The PO, one person and not a committee, orders the single Product Backlog, and the organization must respect those decisions."
-      cols: 3
-      rows: 3
-      nodes:
-        - { id: st1, label: "Stakeholder", col: 1, row: 1 }
-        - { id: st2, label: "Stakeholder", col: 1, row: 3 }
-        - { id: po,  slot: true, correct: po,      col: 2, row: 2 }
-        - { id: pb,  slot: true, correct: backlog, col: 3, row: 2 }
-      edges:
-        - [ st1, po, "convince" ]
-        - [ st2, po, "convince" ]
-        - [ po, pb, "orders" ]
-      components:
-        - { id: pm,      label: "Project Manager" }
-        - { id: sm,      label: "Scrum Master" }
-        - { id: team,    label: "Scrum Team" }
-        - { id: po,      label: "Product Owner" }
-        - { id: backlog, label: "Product Backlog" }

@@ -22,6 +22,8 @@ Recently I significantly expanded into AI Engineering and was able to get hands-
 
 [Professional Scrum Master 1](https://www.scrum.org/user/1565530)
 
+[Professional Scrum Product Owner 1](https://www.scrum.org/user/1565530)
+
 ### Things that drive me
 
 I'm a huge fan of serverless solutions and [tiny nano-services]({% link _talks/2024-7-9-building-nanoservices-with-azure-functions.md %}). However, after exploring Kubernetes on one of my recent projects, I'm not even sure what I prefer more 🤣
