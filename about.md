@@ -24,6 +24,13 @@ Recently I significantly expanded into AI Engineering and was able to get hands-
 
 [Professional Scrum Product Owner 1](https://www.scrum.org/user/1565530)
 
+<div class="credential-badges" markdown="0">
+{% include credential-badge.html link="https://learn.microsoft.com/en-us/users/uladzislaukhomich-9164/credentials/e832224a7dc036d?ref=https%3A%2F%2Fulad.net%2F" icon="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" title="Microsoft Certified: Azure Fundamentals" %}
+{% include credential-badge.html link="https://learn.microsoft.com/en-us/users/uladzislaukhomich-9164/credentials/98ef18ac6f32bc95?ref=https%3A%2F%2Fulad.net%2F" icon="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" title="Microsoft Certified: Azure AI Fundamentals" %}
+{% include credential-badge.html link="https://www.scrum.org/user/1565530" icon="https://static.scrum.org/web/badges/badge-09173b39-cedf-4321-88b6-ce0acdfb5a70.svg" title="Professional Scrum Master 1" %}
+{% include credential-badge.html link="https://www.scrum.org/user/1565530" icon="https://static.scrum.org/web/badges/badge-7c6b0a4f-883a-4c44-9d19-8bde53241a78.svg" title="Professional Scrum Product Owner 1" %}
+</div>
+
 ### Things that drive me
 
 I'm a huge fan of serverless solutions and [tiny nano-services]({% link _talks/2024-7-9-building-nanoservices-with-azure-functions.md %}). However, after exploring Kubernetes on one of my recent projects, I'm not even sure what I prefer more 🤣

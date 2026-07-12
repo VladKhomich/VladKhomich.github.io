@@ -723,6 +723,32 @@ nav {
   }
 }
 
+.credential-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+  margin: 1em 0;
+}
+
+.credential-badge {
+  display: inline-flex;
+  line-height: 0;
+  transition: transform 0.1s, opacity 0.15s;
+
+  &:hover,
+  &:active {
+    opacity: 0.8;
+    transform: translateY(-1px);
+  }
+}
+
+.credential-badge-icon {
+  width: 4.8em;
+  height: 4.8em;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
@@ -739,6 +765,11 @@ footer {
     font-size: 0.8em;
     color: $gray;
   }
+}
+
+.svg-icon {
+  background-color: var(--icon-chip-bg);
+  border-radius: 50%;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
