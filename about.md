@@ -48,4 +48,4 @@ Another important aspect for me is active participation in technical interviews 
 
 ### Contact me
 
-[Email](mailto:pahomax4556vladislav@gmail.com)
+[iam@ulad.net](mailto:iam@ulad.net)
