@@ -1,0 +1,91 @@
+.reading-search {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.5em 0.8em;
+  border: 1px solid $lightGray;
+  border-radius: 6px;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+    border-color: $blue;
+  }
+}
+
+.reading-tags-filter {
+  margin: 1em 0 1.5em;
+}
+
+.reading-empty {
+  color: $gray;
+  font-style: italic;
+}
+
+.reading-pager {
+  float: none;
+  margin: 1.5em 0 0;
+  text-align: center;
+}
+
+.reading-page {
+  min-width: 2.2em;
+  margin: 0 0.2em;
+  padding: 0.3em 0.6em;
+  border: 1px solid $lightGray;
+  border-radius: 6px;
+  background: transparent;
+  color: $gray;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    border-color: $blue;
+    color: $blue;
+  }
+}
+
+.reading-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reading-item {
+  padding: 1em 0;
+  border-bottom: 1px solid $lightGray;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.reading-title {
+  margin: 0 0 0.2em;
+}
+
+.reading-dates span + span::before {
+  content: " · ";
+}
+
+.reading-review p {
+  margin: 0.5em 0;
+}
+
+.reading-tag {
+  display: inline-block;
+  margin: 0 0.4em 0.4em 0;
+  padding: 0.15em 0.6em;
+  border: 1px solid $lightGray;
+  border-radius: 99px;
+  background: transparent;
+  color: $gray;
+  font-size: 0.8em;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    border-color: $blue;
+    color: $blue;
+  }
+}

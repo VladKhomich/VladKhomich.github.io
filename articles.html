@@ -1,0 +1,122 @@
+---
+layout: page
+title: Reading List
+---
+
+<p>Articles I've read recently, with a short note on each.</p>
+
+{% assign all_tags = "" | split: "" %}
+{% for article in site.data.articles %}
+  {% assign all_tags = all_tags | concat: article.tags %}
+{% endfor %}
+{% assign all_tags = all_tags | uniq | sort %}
+
+<input type="search" class="reading-search" placeholder="Search articles..." aria-label="Search articles">
+
+<div class="reading-tags-filter">
+  <button type="button" class="reading-tag active" data-tag="">all</button>
+  {% for tag in all_tags %}
+    <button type="button" class="reading-tag" data-tag="{{ tag }}">{{ tag }}</button>
+  {% endfor %}
+</div>
+
+<ul class="reading-list">
+  {% for article in site.data.articles %}
+    <li class="reading-item" data-tags="{{ article.tags | join: ' ' }}">
+      <h3 class="reading-title">
+        <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
+      </h3>
+      {% if article.published or article.read %}
+        <div class="date reading-dates">
+          {% if article.read %}<span>Read {{ article.read | date: "%B %e, %Y" }}</span>{% endif %}
+          {% if article.published %}<span>Published {{ article.published | date: "%B %e, %Y" }}</span>{% endif %}
+        </div>
+      {% endif %}
+      <div class="reading-review">{{ article.review | markdownify }}</div>
+      <div class="reading-tags">
+        {% for tag in article.tags %}
+          <button type="button" class="reading-tag" data-tag="{{ tag }}">{{ tag }}</button>
+        {% endfor %}
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+<p class="reading-empty" hidden>No articles match.</p>
+
+<nav class="reading-pager" aria-label="Pages"></nav>
+
+<script>
+  (function () {
+    var PAGE_SIZE = 10;
+    var items = Array.prototype.slice.call(document.querySelectorAll('.reading-item'));
+    var filterButtons = document.querySelectorAll('.reading-tags-filter .reading-tag');
+    var search = document.querySelector('.reading-search');
+    var pager = document.querySelector('.reading-pager');
+    var empty = document.querySelector('.reading-empty');
+    var state = { tag: '', query: '', page: 1 };
+
+    items.forEach(function (item) {
+      item._text = item.textContent.toLowerCase();
+      item._tags = item.getAttribute('data-tags').split(' ');
+    });
+
+    function render() {
+      var words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
+      var matches = items.filter(function (item) {
+        if (state.tag && item._tags.indexOf(state.tag) === -1) return false;
+        return words.every(function (w) { return item._text.indexOf(w) !== -1; });
+      });
+
+      var pages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+      state.page = Math.min(state.page, pages);
+      var start = (state.page - 1) * PAGE_SIZE;
+      var visible = matches.slice(start, start + PAGE_SIZE);
+
+      items.forEach(function (item) {
+        item.style.display = visible.indexOf(item) !== -1 ? '' : 'none';
+      });
+      empty.hidden = matches.length > 0;
+
+      filterButtons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-tag') === state.tag);
+      });
+
+      pager.innerHTML = '';
+      if (pages > 1) {
+        for (var p = 1; p <= pages; p++) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = p;
+          btn.className = 'reading-page' + (p === state.page ? ' active' : '');
+          btn.setAttribute('data-page', p);
+          pager.appendChild(btn);
+        }
+      }
+    }
+
+    document.querySelectorAll('.reading-tag').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.tag = btn.getAttribute('data-tag');
+        state.page = 1;
+        render();
+      });
+    });
+
+    search.addEventListener('input', function () {
+      state.query = search.value;
+      state.page = 1;
+      render();
+    });
+
+    pager.addEventListener('click', function (e) {
+      var page = e.target.getAttribute('data-page');
+      if (!page) return;
+      state.page = Number(page);
+      render();
+      search.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    render();
+  })();
+</script>

@@ -1,0 +1,10 @@
+# Articles I've read. Newest first.
+# Fields: title, url, review (short, markdown allowed), tags (list),
+#         read (YYYY-MM-DD), published (optional, YYYY-MM-DD)
+
+- title: "Healthy code needs 22 to 35% fewer tokens for agentic code review"
+  url: https://codescene.com/blog/does-code-quality-affect-ai-token-costs
+  published: 2026-10-26
+  read: 2026-11-21
+  review: "The size of pull request is not the only criterion for token price for review. Nowadays we still need to pay a lot of attention to CodeHealth to save money and work more effectively."
+  tags: [ai, code-quality]
