@@ -2,6 +2,13 @@
 # Fields: title, url, review (short, markdown allowed), tags (list),
 #         read (YYYY-MM-DD), published (optional, YYYY-MM-DD)
 
+- title: "Maintainers don't need more AI bug reports. They need fixes."
+  url: https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/
+  published: 2026-11-17
+  read: 2026-11-21
+  review: "A raw security scan can't help, but a proposed fix can. AI findings are cheap now, but the main bottleneck is fixing the issues. It seems that in the AI era, open source projects can get a development boost."
+  tags: [ai, security]
+
 - title: "Healthy code needs 22 to 35% fewer tokens for agentic code review"
   url: https://codescene.com/blog/does-code-quality-affect-ai-token-costs
   published: 2026-10-26
