@@ -2,6 +2,13 @@
 # Fields: title, url, review (short, markdown allowed), tags (list),
 #         read (YYYY-MM-DD), published (optional, YYYY-MM-DD)
 
+- title: "AI is Changing the Cross-Platform Decision Matrix"
+  url: https://devblogs.microsoft.com/dotnet/ai-cross-platform-decision-matrix/
+  published: 2026-11-20
+  read: 2026-11-22
+  review: "A common trap for a code owner: if agents can rewrite in days, I'll get a boost in development speed. This experiment showed that a stack switch can be cheap with agents, but maintenance can slow down."
+  tags: [ai, ai-accelerated-development, dotnet]
+
 - title: "Maintainers don't need more AI bug reports. They need fixes."
   url: https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/
   published: 2026-11-17
